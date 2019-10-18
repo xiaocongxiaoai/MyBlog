@@ -34,10 +34,9 @@ class APILoginController extends Controller
         if(Auth::attempt(['name' =>$request->name,'password'=>$request->password])||Auth::attempt(['email'=>$request->name,'password'=>$request->password])){
             $msg_code = 0;
             $msg[]="登录成功！";
-            Cache::put('login',1);
+            //设置登录状态 1为登录
+
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg,'UserId'=>Auth::user()->userOnlyId,'apitoken'=>Auth::user()->api_token],JSON_UNESCAPED_UNICODE);
-
-
         }else{
             //否则登录失败
             $msg_code = 1;
@@ -47,5 +46,4 @@ class APILoginController extends Controller
 
 
     }
-
 }

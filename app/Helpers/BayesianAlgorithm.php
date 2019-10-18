@@ -6,12 +6,7 @@ use Fukuball\Jieba\Jieba;
 use phpDocumentor\Reflection\Types\This;
 use function foo\func;
 
-////多线程的定义
-//$test = new class extends Thread{
-//    public function run(){
-//        echo '大家好';
-//    }
-//};
+
 
 //用于训练集
 function learns(){

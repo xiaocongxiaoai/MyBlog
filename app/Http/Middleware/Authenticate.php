@@ -16,7 +16,6 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             //return route('Login');
-            echo "<script>alter('123')</script>";
 
         }
     }

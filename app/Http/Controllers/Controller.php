@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Controller extends BaseController
@@ -49,7 +50,7 @@ class Controller extends BaseController
         Jieba::init();
         Finalseg::init();
         //分词必要设置↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-        $testWords = "我今天吃饭了";
+        $testWords = "";
         $testWords = Jieba::cut($testWords);
         //开始
         $testWords_return = setOfWords2Vec($myVocabList,$testWords);
@@ -75,16 +76,6 @@ class Controller extends BaseController
     ///测试
     public function test_jiami(){
 
-        $t = [0,1,0,1,0,1];
-        $a = [1,0,1,0,1,0];
-        $end =count($t);
-        $x = [];
-
-        foreach (range(0,$end-1)as $b){
-            $x[]=$t[$b]+$a[$b];
-        }
-
-        dd($x);
 //        $iv = random_bytes(16);
 //        dd($iv);
 //        $t="Fyi6kiI24shuDhfyNNHl3g==";
