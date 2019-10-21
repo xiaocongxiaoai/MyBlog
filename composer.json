@@ -44,8 +44,7 @@
         ],
         "files": [
             "app/Helpers/function.php",
-            "app/Helpers/BayesianAlgorithm.php",
-            "app/Helpers/loginInfo.php"
+            "app/Helpers/BayesianAlgorithm.php"
         ]
     },
     "autoload-dev": {

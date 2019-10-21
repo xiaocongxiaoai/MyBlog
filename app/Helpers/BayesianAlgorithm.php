@@ -75,8 +75,8 @@ function learns(){
             //两个数组之间取并集（数组+数组计算，求出唯一性词库）
             $vocabSet =array_merge($vocabSet,array_unique($dataSets));
         }
-        $vocabSet = array_unique($vocabSet);
-
+        //array_merge()从新排序数组下标，解决array_unique函数乱序问题
+        $vocabSet = array_merge(array_unique($vocabSet));
         return $vocabSet;
     }
     function setOfWords2Vec($vocabList,$inputSet){
@@ -86,7 +86,7 @@ function learns(){
             $returnVec[] = 0;
         }
         foreach ($inputSet as $word){
-            if( in_array($word,$vocabList)){
+            if(in_array($word,$vocabList)){
                 $returnVec[array_search($word,$vocabList)] = 1;
             }
         }
@@ -122,7 +122,6 @@ function learns(){
             $p1Vect[] = log((float)($p1Num[$s]/$p1Denom));            //P(Xn|A)          已知知道数据来自坏的词向量，那么出现某些词的概率
             $p0Vect[] = log((float)($p0Num[$s]/$p0Denom));            //P(Xn|B)          已知知道数据来自好的词向量，那么出现某些词的概率
         }
-
         return [$p1Vect,$p0Vect,$pAbusive];
     }
 

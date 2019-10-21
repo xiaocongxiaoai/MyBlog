@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\BlogInfo;
+use App\BlogType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -48,6 +49,11 @@ class BlogController extends Controller
 
     }
     //blog类别展示
+    public function GetBlogType(){
+        $type = BlogType::all();
+        return json_encode(['msg_code' =>0,'data'=>$type],JSON_UNESCAPED_UNICODE);
+    }
+
     //blog具体信息
 
 

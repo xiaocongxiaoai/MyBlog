@@ -36,6 +36,7 @@ Route::post('/blog/regisert',"API\Auth\APIRegisertController@Regisert");
 Route::post('/blog/login','API\Auth\APILoginController@Login')->name('Login');
 Route::get('/blog/test','API\Auth\APILoginController@test_login');
 
+
 //登出接口
 Route::get('/blog/loginOut','API\Auth\APILoginOutController@LoginOut');
 
@@ -43,8 +44,9 @@ Route::get('/blog/loginOut','API\Auth\APILoginOutController@LoginOut');
 Route::get('/blog','API\BlogController@Search')->middleware('login');
 
 Route::group(['middleware' => 'auth.api'], function () {
-
+    //创建博客
     Route::post('/blog/create','API\UserController@createBlog');
-
+    //获取博客类别
+    Route::get('/blog/getType','API\BlogController@GetBlogType');
 });
 

@@ -51,13 +51,13 @@ class UserController extends Controller
             return json_encode(['msg_code' => $msg_code, 'msg' => $msg], JSON_UNESCAPED_UNICODE);
         }
         //验证blog的提交者是否为空
-        if(is_null($request->userId)){
+        if(is_null(Auth::guard('api')->user())){
             $msg_code = 1;    //返回错误信息
             $msg[] = "系统错误请通知管理员！";
             return json_encode(['msg_code' => $msg_code, 'msg' => $msg], JSON_UNESCAPED_UNICODE);
         }
         //api_token验证
-        if(is_null($request->apitoken)){
+        if(is_null($request->api_token)){
             $msg_code = 1;    //返回错误信息
             $msg[] = "请求错误请检查token！";
             return json_encode(['msg_code' => $msg_code, 'msg' => $msg], JSON_UNESCAPED_UNICODE);
