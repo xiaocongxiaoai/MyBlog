@@ -16,6 +16,7 @@ class CreateTUblogType extends Migration
         Schema::create('t_ublog_type', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('ublogTypeOnlyId');
+            $table->string('userId',36);
             $table->string('name',255);
             $table->string('remark',255)->nullable();
             $table->timestamps();

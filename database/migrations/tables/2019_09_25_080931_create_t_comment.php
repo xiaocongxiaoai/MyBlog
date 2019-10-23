@@ -19,6 +19,8 @@ class CreateTComment extends Migration
             $table->string('userId',36);   //评论者
             $table->string('content',1000);//评论内容
             $table->string('blogId',36);   //评论的文章
+            $table->integer('likeNum')->default(0);           //评论点赞人数
+            $table->integer('noLikeNum')->default(0);         //
             $table->timestamps();
 
         });

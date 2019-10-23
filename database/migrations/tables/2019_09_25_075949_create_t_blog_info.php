@@ -25,7 +25,8 @@ class CreateTBlogInfo extends Migration
             $table->integer('readNum')->default(0);  //阅读人数默认值为0
             $table->integer('likeNum')->default(0);  //点赞数默认为0
             $table->integer('isPublic')->default(1);  //是否公开  默认值为1 表示公开
-            $table->integer('isSuspicious')->default(0); //是否带有侮辱性;
+            $table->integer('isSuspicious')->default(0); //是否带有侮辱性，（0:不带侮辱性，1:管理员审核后确定带有侮辱性,2:系统自动判断带有侮辱性,3:被10人用户举报的）
+            $table->integer('reportNum')->default(0);   //举报人数
             $table->timestamps();
 
         });

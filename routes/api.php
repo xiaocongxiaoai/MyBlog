@@ -20,10 +20,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-//Route::group(['middleware' => 'web'], function () {
-//    Route::post('/blog/login','API\Auth\APILoginController@Login')->name('Login');
-//
-//});
 ////测试接口
 Route::get('/test',"API\APIControllers@fenci");
 //Route::get('/hhh/test',"API\APIControllers@GetBlogTag");
@@ -41,12 +37,22 @@ Route::get('/blog/test','API\Auth\APILoginController@test_login');
 Route::get('/blog/loginOut','API\Auth\APILoginOutController@LoginOut');
 
 //博客
-Route::get('/blog','API\BlogController@Search')->middleware('login');
+//oute::get('/blog','API\BlogController@Search')->middleware('login');
 
 Route::group(['middleware' => 'auth.api'], function () {
     //创建博客
     Route::post('/blog/create','API\UserController@createBlog');
     //获取博客类别
     Route::get('/blog/getType','API\BlogController@GetBlogType');
+    //获取博客详情
+    Route::get('/blog/getBlogInfo','API\BlogController@BlogInfo');
+    //获取系统标签
+    Route::get('/blog/getTag','API\BlogController@BlogTag');
+    //获取blog列表
+    Route::get('/blog/search','API\BlogController@Search');
+    //获取自己博客列表
+    Route::get('/blog/myBlog','API\UserController@MyBlog');
+    //更改我的blog
+    Route::post('/blog/change','PI\UserController@BlogChange');
 });
 

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class APIControllers extends Controller
 {
+    //admin
 
 
 

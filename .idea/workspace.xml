@@ -3,11 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/BayesianAlgorithm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/BayesianAlgorithm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/APIControllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/APIControllers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_10_091814_create_t_training_bayes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_10_10_091814_create_t_training_bayes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080121_create_t_ublog_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080121_create_t_ublog_type.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,6 +25,20 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -129,14 +147,14 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xcc\code\Blog\database\migrations\tables" />
       <recent name="D:\xcc\code\Blog\app\Http\Controllers\API\Auth" />
       <recent name="D:\xcc\code\Blog\app\Http\Controllers\API" />
       <recent name="D:\xcc\code\Blog\database\migrations\constraint" />
-      <recent name="D:\xcc\code\Blog\database\migrations\tables" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -195,7 +213,9 @@
       <workItem from="1571195304557" duration="2441000" />
       <workItem from="1571274255225" duration="7221000" />
       <workItem from="1571361398700" duration="24967000" />
-      <workItem from="1571623478967" duration="9720000" />
+      <workItem from="1571623478967" duration="9811000" />
+      <workItem from="1571706791637" duration="18445000" />
+      <workItem from="1571790835782" duration="17831000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -218,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571390151726</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="更新算法bug">
+      <created>1571650634114</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571650634114</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +298,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="first add" />
     <MESSAGE value="blog bug solve" />
-    <option name="LAST_COMMIT_MESSAGE" value="blog bug solve" />
+    <MESSAGE value="更新算法bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新算法bug" />
   </component>
 </project>

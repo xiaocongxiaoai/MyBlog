@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\BlogInfo;
+use DemeterChain\B;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,9 @@ class UserController extends Controller
     //查看自己的信息
     //修改自己的信息
     //查看他人的信息
+    //点赞微博
+    //点赞/点踩评论
+    //查看自己历史查看记录
     //自己blog的管理(增删改)
     //1.发表blog
     public function createBlog(Request $request){
@@ -71,10 +75,10 @@ class UserController extends Controller
         $bloginfo->blogUserTypeId = is_null($request->blogUserType)?null:$request->blogUserType;
         $bloginfo->blogTag = is_null($request->blogTag)?"无":$request->blogUserType;
         $bloginfo->user_id = Auth::guard('api')->user()->userOnlyId;
-        $bloginfo->isPublic = $request->isPublic;        //是否公开,默认值为1 代表是
+        $bloginfo->isPublic = is_null($request->isPublic)?1:$request->isPublic;        //是否公开,默认值为1 代表是
         //是否可疑（为标题存在敏感内容）
         $bloginfo->isSuspicious = 0;               //默认值为0 代表不是含有侮辱性的
-
+        $bloginfo->reportNum = 0;                  //举报人数默认值为0
         if($bloginfo->save()){
             $msg_code = 0;    //返回正确信息
             $msg[] = "提交成功！";
@@ -86,5 +90,82 @@ class UserController extends Controller
         }
 
     }
+
+    //2.查询自己的blog(正常blog，异常blog)
+    //
+    public function MyBlog(Request $request){
+        //当前页
+        $index = intval(is_null($request->index)?1:$request->index);
+        //每页展示数
+        $pagecount =intval(is_null($request->pagecount)?30:$request->pagecount);
+        //展示blog类别
+        $blogtypeId = is_null($request->blogtypeId)?"":$request->blogtypeId;
+        //默认以某类别进行展示,且默认按时间先后进行展示
+        $type = intval(is_null($request->type)?1:$request->type);    //表示是否点击按时间先后还是热度，如果没有点击默认选择时间先后 1：时间先后、2：热度先后
+        if($type==1){
+            $types = "created_at";
+        }else{
+            //热度先后展示(点赞人数)
+            $types = "likeNum";
+        }
+        //我的博客的好与坏
+        $isGood = intval(is_null($request->isGood)?0:$request->isGood);           //1：代表有异常的blog  0：代表正常的blog
+        //blog总数
+        $blogNum = BlogInfo::
+            where('isPublic','=',1)
+            ->where('isSuspicious','=',0)
+            ->count();
+        //blog分页数据
+        $current = ($index-1)*$pagecount;    //开始取数据的位置
+        $goodinfo = BlogInfo::where('isSuspicious','=',0)
+            ->where('user_id','=',Auth::guard('api')->user()->userOnlyId)
+            ->where('blogOnlyId','like','%'.$blogtypeId.'%')
+            ->where('isSuspicious','=',$isGood)
+            ->orderBy($types,'desc')
+            ->offset($current)->limit($pagecount-1)
+            ->get();
+        return json_encode(['blogNum'=>$blogNum,'data'=>$goodinfo],JSON_UNESCAPED_UNICODE);
+    }
+
+    //更改我写的blog
+    public function BlogChange(Request $request){
+        //验证blog是否存在
+        $bloginfo = BlogInfo::where('blogOnlyId','=',$request->blogId)->first();
+        if(is_null($bloginfo)){
+            return json_encode(['msg_code'=>1,'msg'=>'该博客已被删除或不存在！'],JSON_UNESCAPED_UNICODE);
+        }
+        //验证是否属于用户本身
+        if($bloginfo->user_id != Auth::guard('api')->user()->userOnlyId){
+            return json_encode(['msg_code'=>1,'msg'=>'你无法更改别人的博客！'],JSON_UNESCAPED_UNICODE);
+        }
+        //验证blog是否处于异常状态
+        switch ($bloginfo->isSuspicious){
+            case 1 :
+                return json_encode(['msg_code'=>1,'msg'=>'该blog存在问题暂时无法更改详情请看审核反馈'],JSON_UNESCAPED_UNICODE);
+                break;
+            case 2 :
+                return json_encode(['msg_code'=>1,'msg'=>'该blog可能存在问题，请等待管理员审核'],JSON_UNESCAPED_UNICODE);
+                break;
+            case 3 :
+                return json_encode(['msg_code'=>1,'msg'=>'该blog被多名用户举报，请等待管理员审核'],JSON_UNESCAPED_UNICODE);
+                break;
+            default :
+                continue;
+        }
+
+        //更改blog
+        $bloginfo->blogTitle = $request->title;
+        $bloginfo->blogContent = $request->blogContent;
+        $bloginfo->blogTypeId = $request->blogType;
+        $bloginfo->blogUserTypeId = is_null($request->blogUserType)?null:$request->blogUserType;
+        $bloginfo->blogTag = is_null($request->blogTag)?"无":$request->blogUserType;
+        $bloginfo->isPublic = is_null($request->isPublic)?1:$request->isPublic;
+        if($bloginfo->save()){
+            return json_encode(['msg_code'=>0,'msg'=>'更新成功！']);
+        }else{
+            return json_encode(['msg_code'=>1,'msg'=>'出现未知错误请联系管理员！'],JSON_UNESCAPED_UNICODE);
+        }
+    }
+
 
 }

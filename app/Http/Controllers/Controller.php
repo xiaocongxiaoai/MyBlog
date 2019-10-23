@@ -50,7 +50,7 @@ class Controller extends BaseController
         Jieba::init();
         Finalseg::init();
         //分词必要设置↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-        $testWords = "我爱河南人";
+        $testWords = "我喜欢你";
         $testWords = Jieba::cut($testWords);
         //开始
         $testWords_return = setOfWords2Vec($myVocabList,$testWords);
