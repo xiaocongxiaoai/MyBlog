@@ -53,6 +53,8 @@ Route::group(['middleware' => 'auth.api'], function () {
     //获取自己博客列表
     Route::get('/blog/myBlog','API\UserController@MyBlog');
     //更改我的blog
-    Route::post('/blog/change','PI\UserController@BlogChange');
+    Route::post('/blog/change','API\UserController@BlogChange');
+    //查看历史记录
+    Route::get('/blog/history','API\UserController@History');
 });
 

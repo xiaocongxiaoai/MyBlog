@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\BlogInfo;
+use App\UserAction;
 use DemeterChain\B;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
@@ -20,6 +21,13 @@ class UserController extends Controller
     //点赞微博
     //点赞/点踩评论
     //查看自己历史查看记录
+    public function History(){
+        $history = UserAction::where('userId','=',Auth::guard('api')->user()->userOnlyId)
+        ->join('t_blog_info','t_user_action.blogInfoId','t_blog_info.blogOnlyId')
+        ->get(['t_blog_info.*','t_user_action.created_at']);
+        return json_encode(['msg_code'=>0,'data'=>$history],JSON_UNESCAPED_UNICODE);
+    }
+
     //自己blog的管理(增删改)
     //1.发表blog
     public function createBlog(Request $request){
@@ -150,7 +158,7 @@ class UserController extends Controller
                 return json_encode(['msg_code'=>1,'msg'=>'该blog被多名用户举报，请等待管理员审核'],JSON_UNESCAPED_UNICODE);
                 break;
             default :
-                continue;
+                break;
         }
 
         //更改blog

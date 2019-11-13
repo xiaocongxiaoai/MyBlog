@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="">
+    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="更新blog模块下的接口（blog的增查改等相关aip接口）">
+      <change afterPath="$PROJECT_DIR$/app/Events/News.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/img/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Blog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/APIControllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/APIControllers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_10_091814_create_t_training_bayes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_10_10_091814_create_t_training_bayes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080121_create_t_ublog_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080121_create_t_ublog_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/console.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,14 +147,19 @@
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/fukuball/jieba-php" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="ProjectId" id="1R0CpLykZmZxz1CuX51b4KelLvm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -147,10 +167,16 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xcc\code\Blog\public\img" />
+      <recent name="D:\xcc\code\Blog\resources\views\admin" />
+      <recent name="D:\xcc\code\Blog\resources\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xcc\code\Blog\resources\views\img" />
       <recent name="D:\xcc\code\Blog\database\migrations\tables" />
       <recent name="D:\xcc\code\Blog\app\Http\Controllers\API\Auth" />
       <recent name="D:\xcc\code\Blog\app\Http\Controllers\API" />
@@ -215,7 +241,11 @@
       <workItem from="1571361398700" duration="24967000" />
       <workItem from="1571623478967" duration="9811000" />
       <workItem from="1571706791637" duration="18445000" />
-      <workItem from="1571790835782" duration="17831000" />
+      <workItem from="1571790835782" duration="22083000" />
+      <workItem from="1571881383972" duration="16064000" />
+      <workItem from="1571971783477" duration="11971000" />
+      <workItem from="1572246846897" duration="2270000" />
+      <workItem from="1572321005453" duration="983000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -245,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571650634114</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="更新blog模块下的接口（blog的增查改等相关aip接口）">
+      <created>1571813840176</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571813840176</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,10 +332,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="1" />
     <MESSAGE value="first add" />
     <MESSAGE value="blog bug solve" />
     <MESSAGE value="更新算法bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新算法bug" />
+    <MESSAGE value="更新blog模块下的接口（blog的增查改等相关aip接口）" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新blog模块下的接口（blog的增查改等相关aip接口）" />
   </component>
 </project>

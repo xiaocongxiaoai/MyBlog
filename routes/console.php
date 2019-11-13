@@ -1,6 +1,8 @@
 <?php
 
+use App\Events\News;
 use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('TestXcc',function (){
+    broadcast(new News('你好，我是谢聪聪'));
+    $this->comment('OK');
+})->describe('一个返回');
