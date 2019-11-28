@@ -34,7 +34,7 @@ class UserController extends Controller
         //验证blog标题
         //api_token 访问用户信息语法  guard(api)是指这个Auth查询类别是指config/auth.php 中guards走api验证
         //dd(Auth::guard('api')->user()->name);
-        if(is_null($request->blogTitle)){
+        if(is_null($request->title)){
             $msg_code = 1;    //返回错误信息
             $msg[]="标题不能为空！";
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
@@ -42,18 +42,20 @@ class UserController extends Controller
             if(strpos($request->title,'>')-strpos($request->title,'<')>0){
                 $msg_code = 1;    //返回错误信息
                 $msg[]="标题含有非法字符！";
+                return json_encode(['msg_code' => $msg_code , 'msg' => $msg],JSON_UNESCAPED_UNICODE);
             }
-            if(strlen($request->title)>70||strlen($request->title)<6){
+            if(mb_strlen($request->title)>35||mb_strlen($request->title)<3){
                 $msg_code = 1;    //返回错误信息
                 $msg[]="标题不得少于三个字，不得多于35个字！";
+                return json_encode(['msg_code' => $msg_code , 'msg' => $msg],JSON_UNESCAPED_UNICODE);
             }
-            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
         }
         //验证blog内容
+
         if (is_null($request->blogContent)){
-            $msg_code = 1;    //返回错误信息
+            $msg_codes = 1;    //返回错误信息
             $msg[] = "内容不能为空！";
-            return json_encode(['msg_code' => $msg_code, 'msg' => $msg], JSON_UNESCAPED_UNICODE);
+            return json_encode(['msg_code' => $msg_codes, 'msg' => $msg], JSON_UNESCAPED_UNICODE);
         }
 
         //验证blog类型是否选择   暂定单选，单类型
@@ -80,7 +82,7 @@ class UserController extends Controller
         $bloginfo->blogTitle = $request->title;
         $bloginfo->blogContent = $request->blogContent;
         $bloginfo->blogTypeId = $request->blogType;
-        $bloginfo->blogUserTypeId = is_null($request->blogUserType)?null:$request->blogUserType;
+        $bloginfo->blogUserTypeId = is_null($request->blogUserType)?"":$request->blogUserType;
         $bloginfo->blogTag = is_null($request->blogTag)?"无":$request->blogUserType;
         $bloginfo->user_id = Auth::guard('api')->user()->userOnlyId;
         $bloginfo->isPublic = is_null($request->isPublic)?1:$request->isPublic;        //是否公开,默认值为1 代表是
@@ -165,7 +167,7 @@ class UserController extends Controller
         $bloginfo->blogTitle = $request->title;
         $bloginfo->blogContent = $request->blogContent;
         $bloginfo->blogTypeId = $request->blogType;
-        $bloginfo->blogUserTypeId = is_null($request->blogUserType)?null:$request->blogUserType;
+        $bloginfo->blogUserTypeId = is_null($request->blogUserType)?"":$request->blogUserType;
         $bloginfo->blogTag = is_null($request->blogTag)?"无":$request->blogUserType;
         $bloginfo->isPublic = is_null($request->isPublic)?1:$request->isPublic;
         if($bloginfo->save()){

@@ -3,3 +3,6 @@
 有需求可联系我：
 邮箱：313697239@qq.com
 QQ:313697239
+
+#运行数据迁移
+php artisan migrate --path=MyBlog/database/migrations/tables

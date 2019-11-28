@@ -23,6 +23,7 @@ class CreateTUser extends Migration
             $table->string('phoneNum',255)->nullable();
             $table->integer('isPublic')->default(0);
             $table->string('api_token',255);
+            $table->integer('role')->default(0);
             $table->timestamps();
 
         });

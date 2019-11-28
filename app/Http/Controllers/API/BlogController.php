@@ -49,6 +49,10 @@ class BlogController extends Controller
             ->orderBy($types,'desc')
             ->offset($current)->limit($pagecount-1)
             ->get(['t_blog_info.*','t_user.name']);
+        foreach ($bloginfo as $bloginfos){
+            $bloginfos->blogContent = mb_substr($bloginfos->blogContent , 0 , 100);
+        }
+
         return json_encode(['blogNum'=>$blogNum,'data'=>$bloginfo],JSON_UNESCAPED_UNICODE);
     }
 

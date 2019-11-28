@@ -16,6 +16,24 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//允许跨域
+//Route::options('/{all}', function(Request $request) {
+//    $origin = $request->header('ORIGIN', '*');
+//    header("Access-Control-Allow-Origin: $origin");
+//    header("Access-Control-Allow-Credentials: true");
+//    header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+//    header('Access-Control-Allow-Headers: Origin, Access-Control-Request-Headers, SERVER_NAME, Access-Control-Allow-Headers, cache-control, token, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie, USERID, SIGN, TIME');
+//    $token = $request->header('token');
+//    if(!$token){
+//        json_encode(['msg_code'=>401,'msg'=>'授权失败，请检查token'],JSON_UNESCAPED_UNICODE);
+//    }else{
+//        $res = (new Token())->verifyToken($token);
+//        if(!$res){
+//            json_encode(['msg_code'=>402,'msg'=>'token失效，请重新获取'],JSON_UNESCAPED_UNICODE);
+//        }
+//    }
+//    return json_encode(['msg_code'=>1,'msg'=>'兄弟，你访问了我！'],JSON_UNESCAPED_UNICODE);;
+//})->where(['all' => '([a-zA-Z0-9-]|/)+']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -39,6 +57,7 @@ Route::get('/blog/loginOut','API\Auth\APILoginOutController@LoginOut');
 //博客
 //oute::get('/blog','API\BlogController@Search')->middleware('login');
 
+
 Route::group(['middleware' => 'auth.api'], function () {
     //创建博客
     Route::post('/blog/create','API\UserController@createBlog');
@@ -56,5 +75,10 @@ Route::group(['middleware' => 'auth.api'], function () {
     Route::post('/blog/change','API\UserController@BlogChange');
     //查看历史记录
     Route::get('/blog/history','API\UserController@History');
+
+    Route::post('/test',function (){
+        return json_encode(['test'=>'求求你'],JSON_UNESCAPED_UNICODE);
+    });
+
 });
 

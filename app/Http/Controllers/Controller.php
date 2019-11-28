@@ -50,7 +50,7 @@ class Controller extends BaseController
         Jieba::init();
         Finalseg::init();
         //分词必要设置↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-        $testWords = "我喜欢你";
+        $testWords = "我爱你妈";
         $testWords = Jieba::cut($testWords);
         //开始
         $testWords_return = setOfWords2Vec($myVocabList,$testWords);
@@ -67,9 +67,9 @@ class Controller extends BaseController
         $p1 = array_sum($t1)+log($pClass1);
         $p0 = array_sum($t0)+log(1.0-$pClass1);
         if($p1>$p0){
-            return 1;
+            return "你再骂！？";
         }else{
-            return 0;
+            return "你是个懂礼貌的好孩子";
         }
     }
     ///测试

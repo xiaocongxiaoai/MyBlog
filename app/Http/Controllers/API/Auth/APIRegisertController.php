@@ -45,7 +45,7 @@ class APIRegisertController extends Controller
                 $msg[]='用户名不能使用非法字符！再次使用，系统将会拉黑IP！';
                 return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
             }
-            if(!preg_match($mode,$Requst->name)){
+            if(!preg_match($mode,$Requst->email)){
                 $msg_code = 1;
                 $msg[]="邮箱格式错误";
                 return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
@@ -69,6 +69,7 @@ class APIRegisertController extends Controller
                     'summary' =>is_null($Requst->summary) ? "无":$Requst->summary,    //信息
                     'phoneNum' =>is_null($Requst->phoneNum)? null:$Requst->phoneNum, //手机号
                     'isPublic' =>isset($Requst->isPublic)? $Requst->isPublic:0,      //是否公开个人信息，默认为0
+                    'role' => 1                         //0为管理员  1为普通用户
                     //'created_at' =>Carbon::now()->timestamp,                        //获取当前时间并且转化成时间戳
                 ]);
 
