@@ -75,6 +75,10 @@ Route::group(['middleware' => 'auth.api'], function () {
     Route::post('/blog/change','API\UserController@BlogChange');
     //查看历史记录
     Route::get('/blog/history','API\UserController@History');
+    //我的博客标题
+    Route::get('/blog/MyBlogTitle','API\UserController@MyBlogTitle');
+    //所有博客标题
+    Route::get('/blog/BlogTitle','API\BlogController@BlogTitle');
 
     Route::post('/test',function (){
         return json_encode(['test'=>'求求你'],JSON_UNESCAPED_UNICODE);

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -83,7 +84,7 @@ class UserController extends Controller
         $bloginfo->blogContent = $request->blogContent;
         $bloginfo->blogTypeId = $request->blogType;
         $bloginfo->blogUserTypeId = is_null($request->blogUserType)?"":$request->blogUserType;
-        $bloginfo->blogTag = is_null($request->blogTag)?"无":$request->blogUserType;
+        $bloginfo->blogTag = is_null($request->blogTag)?"无":$request->blogTag;
         $bloginfo->user_id = Auth::guard('api')->user()->userOnlyId;
         $bloginfo->isPublic = is_null($request->isPublic)?1:$request->isPublic;        //是否公开,默认值为1 代表是
         //是否可疑（为标题存在敏感内容）
@@ -123,13 +124,16 @@ class UserController extends Controller
         //blog总数
         $blogNum = BlogInfo::
             where('isPublic','=',1)
-            ->where('isSuspicious','=',0)
-            ->count();
-        //blog分页数据
-        $current = ($index-1)*$pagecount;    //开始取数据的位置
-        $goodinfo = BlogInfo::where('isSuspicious','=',0)
+            ->where('isSuspicious','=',$isGood)
             ->where('user_id','=',Auth::guard('api')->user()->userOnlyId)
             ->where('blogOnlyId','like','%'.$blogtypeId.'%')
+            ->count();
+
+        //blog分页数据
+        $current = ($index-1)*$pagecount;    //开始取数据的位置
+        $goodinfo = BlogInfo::
+            where('user_id','=',Auth::guard('api')->user()->userOnlyId)
+            ->where('blogTypeId','like','%'.$blogtypeId.'%')
             ->where('isSuspicious','=',$isGood)
             ->orderBy($types,'desc')
             ->offset($current)->limit($pagecount-1)
@@ -175,6 +179,16 @@ class UserController extends Controller
         }else{
             return json_encode(['msg_code'=>1,'msg'=>'出现未知错误请联系管理员！'],JSON_UNESCAPED_UNICODE);
         }
+    }
+    //我的博客标题智能返回
+    public function MyBlogTitle(Request $request){
+        //$title = BlogInfo::where('blogTitle','like','%'.$request->title.'%')->take(8)->get();
+        $title = DB::table('t_blog_info')
+            ->where('blogTitle','like','%'.$request->title.'%')
+            ->where('user_id','=',Auth::guard('api')->user()->userOnlyId)
+            ->select('blogTitle')
+            ->get();
+        return json_encode(['msg'=>0,'data'=>$title],JSON_UNESCAPED_UNICODE);
     }
 
 

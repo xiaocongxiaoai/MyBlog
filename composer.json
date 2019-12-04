@@ -13,7 +13,8 @@
         "fukuball/jieba-php": "dev-master",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "components/jquery": "3.4.*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

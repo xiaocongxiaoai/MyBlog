@@ -12,6 +12,7 @@ use App\UserAction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -127,6 +128,15 @@ class BlogController extends Controller
             $bloginfo->readNum += 1;
         }
         $bloginfo->save();
+    }
+
+    //博客标题返回
+    public function BlogTitle(Request $request){
+        $title = DB::table('t_blog_info')
+            ->where('blogTitle','like','%'.$request->title.'%')
+            ->select('blogTitle')
+            ->get();
+        return json_encode(['msg'=>0,'data'=>$title],JSON_UNESCAPED_UNICODE);
     }
 
 }

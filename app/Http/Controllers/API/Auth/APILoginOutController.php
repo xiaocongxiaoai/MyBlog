@@ -13,7 +13,6 @@ class APILoginOutController extends Controller
     //
     public function LoginOut(){
 
-        Cache::put('login',0);
         Auth::logout();
 
     }
