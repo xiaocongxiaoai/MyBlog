@@ -2,15 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- import CSS -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="{{asset('jquery/jquery.js')}}"></script>
     <style>
         body{
             width: 100%;
             height: 105%;
-            background: url("{{asset('img/2.jpg')}}");
+            background: url("{{asset('img/admin/2.jpg')}}");
             background-repeat: no-repeat;
             background-size:100% 100%;
             background-attachment: fixed;
@@ -67,17 +69,42 @@
         },
         methods:{
             submit : function(){
-                this.$message({
-                    message: '恭喜你这是一条成功信息',
-                    type: 'success',
-                    duration:1500,
-                }
-                ).then(
-                    //延时跳转，等待当前提示框消失在执行某操作（伪实现）
-                    setTimeout(function () {
-                        window.location.href="http://baidu.com"
-                    },2000)
-                );
+                var that = this
+                $.ajax({
+                    type: 'POST',
+                    url: '/login',
+                    data: { name : that.name,password : that.password},
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data){
+                        if(data.msg_code == 0){
+                            that.$message({
+                                    message: '登陆成功！',
+                                    type: 'success',
+                                    duration:1500,
+                                }
+                            ).then(
+                                //延时跳转，等待当前提示框消失在执行某操作（伪实现）
+                                setTimeout(function () {
+                                    window.location.href="{{route('home')}}"
+                                    //window.location.href="http://localhost:8000/home"
+                                },2000)
+                            );
+                        }else{
+                            that.$message({
+                                    message: data.msg,
+                                    type: 'error',
+                                    duration:1500,
+                                }
+                            )
+                        }
+                    },
+                    error: function(xhr, type){
+                        alert('Ajax error!')
+                    }
+                })
 
             }
         }

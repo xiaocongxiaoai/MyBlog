@@ -18,15 +18,8 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function test(){
-        $info = DB::select('select *from t_user');
-        //dd($info);
-        return json_encode($info,JSON_UNESCAPED_UNICODE);//第二个参数为将json数据格式编码更改
-
-    }
-
-    public function test2(){
-        $userAction = new \GetUserActions();
-        $return = $userAction->GUA();
+        //$info = DB::select('select *from t_user');
+        return json_encode(['msg_code'=>0,'msg'=>'这是一条测试'],JSON_UNESCAPED_UNICODE);//第二个参数为将json数据格式编码更改
 
     }
 
@@ -50,7 +43,7 @@ class Controller extends BaseController
         Jieba::init();
         Finalseg::init();
         //分词必要设置↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-        $testWords = "我爱你妈";
+        $testWords = "测试";
         $testWords = Jieba::cut($testWords);
         //开始
         $testWords_return = setOfWords2Vec($myVocabList,$testWords);

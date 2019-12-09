@@ -48,7 +48,7 @@ class BlogController extends Controller
             ->where('t_blog_info.isSuspicious','=',0)
             ->join('t_user','t_user.userOnlyId','t_blog_info.user_id')
             ->orderBy($types,'desc')
-            ->offset($current)->limit($pagecount-1)
+            ->offset($current)->limit($pagecount)
             ->get(['t_blog_info.*','t_user.name']);
         foreach ($bloginfo as $bloginfos){
             $bloginfos->blogContent = mb_substr($bloginfos->blogContent , 0 , 100);
@@ -134,7 +134,9 @@ class BlogController extends Controller
     public function BlogTitle(Request $request){
         $title = DB::table('t_blog_info')
             ->where('blogTitle','like','%'.$request->title.'%')
-            ->select('blogTitle')
+            ->where('isSuspicious','=',0)
+            ->select('blogTitle as value')
+            ->take(8)
             ->get();
         return json_encode(['msg'=>0,'data'=>$title],JSON_UNESCAPED_UNICODE);
     }

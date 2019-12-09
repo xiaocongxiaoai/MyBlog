@@ -6,6 +6,8 @@ use App\BlogInfo;
 use App\UserAction;
 use DemeterChain\B;
 use Faker\Provider\Uuid;
+use Fukuball\Jieba\Finalseg;
+use Fukuball\Jieba\Jieba;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -88,7 +90,7 @@ class UserController extends Controller
         $bloginfo->user_id = Auth::guard('api')->user()->userOnlyId;
         $bloginfo->isPublic = is_null($request->isPublic)?1:$request->isPublic;        //是否公开,默认值为1 代表是
         //是否可疑（为标题存在敏感内容）
-        $bloginfo->isSuspicious = 0;               //默认值为0 代表不是含有侮辱性的
+        $bloginfo->isSuspicious = $this->test_Bayesians($request->title);               //调用算法测试标题合法性（是否带有侮辱性）
         $bloginfo->reportNum = 0;                  //举报人数默认值为0
         if($bloginfo->save()){
             $msg_code = 0;    //返回正确信息
@@ -124,19 +126,20 @@ class UserController extends Controller
         //blog总数
         $blogNum = BlogInfo::
             where('isPublic','=',1)
-            ->where('isSuspicious','=',$isGood)
             ->where('user_id','=',Auth::guard('api')->user()->userOnlyId)
-            ->where('blogOnlyId','like','%'.$blogtypeId.'%')
+            ->where('blogTypeId','like','%'.$blogtypeId.'%')
+            ->where('blogTitle','like','%'.$request->title.'%')
+            ->where('isSuspicious','=',$isGood)
             ->count();
-
         //blog分页数据
         $current = ($index-1)*$pagecount;    //开始取数据的位置
         $goodinfo = BlogInfo::
             where('user_id','=',Auth::guard('api')->user()->userOnlyId)
             ->where('blogTypeId','like','%'.$blogtypeId.'%')
+            ->where('blogTitle','like','%'.$request->title.'%')
             ->where('isSuspicious','=',$isGood)
             ->orderBy($types,'desc')
-            ->offset($current)->limit($pagecount-1)
+            ->offset($current)->limit($pagecount)
             ->get();
         return json_encode(['blogNum'=>$blogNum,'data'=>$goodinfo],JSON_UNESCAPED_UNICODE);
     }
@@ -169,6 +172,7 @@ class UserController extends Controller
 
         //更改blog
         $bloginfo->blogTitle = $request->title;
+        $bloginfo->blogOnlyId = $request->blogOnlyId;
         $bloginfo->blogContent = $request->blogContent;
         $bloginfo->blogTypeId = $request->blogType;
         $bloginfo->blogUserTypeId = is_null($request->blogUserType)?"":$request->blogUserType;
@@ -186,10 +190,53 @@ class UserController extends Controller
         $title = DB::table('t_blog_info')
             ->where('blogTitle','like','%'.$request->title.'%')
             ->where('user_id','=',Auth::guard('api')->user()->userOnlyId)
-            ->select('blogTitle')
+            ->select('blogTitle as value')
+            ->take(8)
             ->get();
         return json_encode(['msg'=>0,'data'=>$title],JSON_UNESCAPED_UNICODE);
     }
 
+    public function test_Bayesians($title){
+        $listOposts = learns();
+
+        $listClasses = $listOposts[0];
+        $listOposts = $listOposts[1];
+
+        //得到词库
+        $myVocabList = createVocabList($listOposts);
+        $trainMat=[];
+        foreach ($listOposts as $listOpostses){
+            $trainMat[] = setOfWords2Vec($myVocabList,$listOpostses);
+        }
+        //训练算法
+        $returns = trainNB($trainMat,$listClasses);
+        //测试数据
+        //分词必要设置↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        ini_set('memory_limit','1024M');
+        Jieba::init();
+        Finalseg::init();
+        //分词必要设置↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+        $testWords = $title;
+        $testWords = Jieba::cut($testWords);
+        //开始
+        $testWords_return = setOfWords2Vec($myVocabList,$testWords);
+        $end = $this->classifyNBs($testWords_return,$returns[1],$returns[0],$returns[2]);//预测结果1为侮辱性，0为正常
+        return $end;
+    }
+
+    //贝叶斯分类器
+    public function classifyNBs($vec2Classify,$p0vec,$p1vec,$pClass1){
+        foreach(range(0,count($vec2Classify)-1) as $i){
+            $t1[] = $p1vec[$i]*$vec2Classify[$i];     //(P(Xn|A)/P(Xn))*P(A)
+            $t0[] = $p0vec[$i]*$vec2Classify[$i];     //(P(Xn|B)/P(Xn))*P(B)
+        }
+        $p1 = array_sum($t1)+log($pClass1);
+        $p0 = array_sum($t0)+log(1.0-$pClass1);
+        if($p1>$p0){
+            return 1;//"你再骂！？";
+        }else{
+            return 0;//"你是个懂礼貌的好孩子";
+        }
+    }
 
 }

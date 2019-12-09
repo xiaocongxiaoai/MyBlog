@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="新增接口&#10;后端登录页面、模板页面">
-      <change afterPath="$PROJECT_DIR$/public/bootstrap/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/bower.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/component.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/jquery.min.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/jquery.slim.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/jquery.slim.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/jquery.slim.min.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/jquery/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Blog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ImgController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/5a5df26e-172a-11ea-a5a3-080027544624-u=303350860,2970778985&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/admin/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/b2e58b4a-172a-11ea-a04e-080027544624-u=303350860,2970778985&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/b9993eec-172e-11ea-92d2-080027544624-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/c35187fe-172a-11ea-8135-080027544624-u=2426307414,3827850145&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/c3631a82-172a-11ea-ad03-080027544624-u=630342761,3128540209&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/blogReview.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APILoginOutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APILoginOutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/BayesianAlgorithm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/BayesianAlgorithm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/base.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
@@ -170,19 +169,19 @@
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xcc\objects\MyBlog\resources\views" />
-      <recent name="D:\xcc\code\Blog\resources\views\img" />
-      <recent name="D:\xcc\code\Blog\database\migrations\tables" />
-      <recent name="D:\xcc\code\Blog\app\Http\Controllers\API\Auth" />
-      <recent name="D:\xcc\code\Blog\app\Http\Controllers\API" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\xcc\objects\MyBlog\public\bootstrap" />
       <recent name="D:\xcc\objects\MyBlog\public" />
       <recent name="D:\xcc\code\Blog\public\img" />
       <recent name="D:\xcc\code\Blog\resources\views\admin" />
       <recent name="D:\xcc\code\Blog\resources\img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xcc\objects\MyBlog\resources\views" />
+      <recent name="D:\xcc\code\Blog\resources\views\img" />
+      <recent name="D:\xcc\code\Blog\database\migrations\tables" />
+      <recent name="D:\xcc\code\Blog\app\Http\Controllers\API\Auth" />
+      <recent name="D:\xcc\code\Blog\app\Http\Controllers\API" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -255,7 +254,10 @@
       <workItem from="1574991171508" duration="15417000" />
       <workItem from="1575255907998" duration="10456000" />
       <workItem from="1575333359225" duration="6417000" />
-      <workItem from="1575419661748" duration="24969000" />
+      <workItem from="1575419661748" duration="26773000" />
+      <workItem from="1575506028935" duration="21397000" />
+      <workItem from="1575592728489" duration="22190000" />
+      <workItem from="1575851609423" duration="17310000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -299,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574910655595</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="新增接口&#10;后端登录页面、模板页面">
+      <created>1575450148287</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575450148288</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

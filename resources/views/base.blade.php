@@ -23,7 +23,7 @@
                         <el-avatar src="http://10.20.38.251/1.jpg"  :size = "200" :fit="none"  class="image"></el-avatar>
                     </div>
                     <div style="padding: 14px;text-align: center" >
-                        <span>你好</span>
+                        <span>你好管理员</span>
                         <h4 >用户名：<span v-text="userinfo.name"></span></h4>
                         <h4>电话号码：<span v-text="userinfo.phoneNum"></span></h4>
                         <h4>邮箱：<span v-text="userinfo.email"></span></h4>
@@ -128,7 +128,7 @@
 
         <el-main>
             <div>
-
+                @yield('content')
             </div>
 {{--            <el-table :data="tableData">--}}
 {{--                <el-table-column prop="date" label="日期" width="140">--}}
@@ -162,9 +162,7 @@
     }
 </style>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
-<!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-
 <script type="text/javascript">
     new Vue({
         el: '#app',
@@ -176,20 +174,23 @@
                 none:"fill",
                 userinfo:[],
                 bloginfo:[],
-                test:"1992/2/2"
-
+                test:"1992/2/2",
+                @yield('data')
             }
+        },
+        mounted: function () {
+            @yield('mounted')
         },
         methods:{
             handleCommand:function(command) {
+                var that = this
                 if(command =="MyInfo"){
                     this.drawer = true
                     var that = this
-                    //location.href = '/userinfo'+"?userId=b274d81c-0f52-11ea-9dda-080027544624";
                     $.ajax({
                         type: 'GET',
                         url: '/userinfo',
-                        data: { userId : 'b274d81c-0f52-11ea-9dda-080027544624'},
+                        data: { userId : '{{\Illuminate\Support\Facades\Auth::user()->userOnlyId}}'},
                         dataType: 'json',
                         headers: {
                             //'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -197,14 +198,31 @@
                         success: function(data){
                             that.userinfo = data.userinfos
                             that.bloginfo = data.bloginfos
-
                         },
                         error: function(xhr, type){
                             alert('Ajax error!')
                         }
                     });
                 }else{
-                    alert("尽情期待");
+                    //登出
+                    $.ajax({
+                        type: 'GET',
+                        url: '/logout',
+                        data: '',
+                        dataType: 'json',
+                        headers: {},
+                        success: function(data){
+                            that.$message({
+                                message: "管理员再见",
+                                type: 'error',
+                                duration:1000,
+                            });
+                            window.location.href=""
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!')
+                        }
+                    });
                 }
             },
             errorHandler(){
@@ -212,10 +230,8 @@
             },
             change:function () {
                 this.remake+=1
-                //this.userinfo ="2"
-
-            }
+            },
+            @yield('function')
         }
     })
-
 </script>

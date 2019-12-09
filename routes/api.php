@@ -54,8 +54,6 @@ Route::get('/blog/test','API\Auth\APILoginController@test_login');
 //登出接口
 Route::get('/blog/loginOut','API\Auth\APILoginOutController@LoginOut');
 
-//博客
-//oute::get('/blog','API\BlogController@Search')->middleware('login');
 
 
 Route::group(['middleware' => 'auth.api'], function () {
@@ -79,6 +77,8 @@ Route::group(['middleware' => 'auth.api'], function () {
     Route::get('/blog/MyBlogTitle','API\UserController@MyBlogTitle');
     //所有博客标题
     Route::get('/blog/BlogTitle','API\BlogController@BlogTitle');
+    //上传图片
+    Route::post('/blog/ImgUp','API\ImgController@ImgUp');
 
     Route::post('/test',function (){
         return json_encode(['test'=>'求求你'],JSON_UNESCAPED_UNICODE);

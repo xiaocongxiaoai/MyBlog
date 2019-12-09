@@ -23,22 +23,22 @@ function learns(){
 
     $Suspicious = BlogInfo::where('isSuspicious','=','1')->count();   //数据库中带有侮辱性质的博客数量
     $NoSuspicious = BlogInfo::where('isSuspicious','=','0')->count();  //数据库中不带有侮辱性质的博客数量
-    $getNum = null;
-    if(BlogInfo::all()->count()>0&&$Suspicious>0&&$NoSuspicious>0){
-        if($Suspicious==$NoSuspicious){
-                $getNum = 0;
-            }
-        }else{
-            if($Suspicious>$NoSuspicious){
+    $getNum = 0;
+    if(BlogInfo::all()->count()>0 && $Suspicious>0&&$NoSuspicious>0) {
+        if ($Suspicious == $NoSuspicious) {
+            $getNum = 0;
+        } else {
+            if ($Suspicious > $NoSuspicious) {
                 $getNum = $NoSuspicious;
-            }else{
+            } else {
                 $getNum = $Suspicious;
             }
         }
+    }
     if($getNum == 0){
         $blogTitle= BlogInfo::select(['blogTitle','isSuspicious'])->get();
     }else{
-        $blogTitle= BlogInfo::select(['blogTitle','isSuspicious'])->paginate()->get();
+        $blogTitle = BlogInfo::select(['blogTitle','isSuspicious'])->orderby('isSuspicious','desc')->take(2*$getNum)->get();
     }
 
     //去除标点字符
@@ -55,7 +55,6 @@ function learns(){
         //同步更新$classVec
         $classVec[]=$blogTitles->isSuspicious;
     }
-
     //分词必要设置↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
     ini_set('memory_limit','1024M');
     Jieba::init();
