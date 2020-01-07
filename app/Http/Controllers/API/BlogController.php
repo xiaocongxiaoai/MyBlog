@@ -104,7 +104,7 @@ class BlogController extends Controller
                 return json_encode(['msg_code'=>0,'data'=>$bloginfo],JSON_UNESCAPED_UNICODE);
             }
        }else{
-            return json_encode(['msg_code'=>0,'data'=>$bloginfo],JSON_UNESCAPED_UNICODE);
+            return json_encode(['msg_code'=>0,'data1'=>$bloginfo,'data2'=>$comment],JSON_UNESCAPED_UNICODE);
         }
     }
     //blog系统标签展示
@@ -115,10 +115,21 @@ class BlogController extends Controller
 
     //获取评论信息
     public function Comment($blogId){
-        $returns = Comment::where('blogId','=',$blogId)
-            ->join('t_user','t_comment.userId','t_user.userOnlyId')
-            ->get();
-        return $returns;
+        //管理员可获取所有评论
+        if(Auth::guard('api')->user()->role == 1)
+        {
+            $returns = Comment::where('blogId','=',$blogId)
+                ->join('t_user','t_comment.userId','t_user.userOnlyId')
+                ->get();
+            return $returns;
+        }
+        else{
+            $returns = Comment::where('blogId','=',$blogId)
+                ->where('IsHide','=',0)
+                ->join('t_user','t_comment.userId','t_user.userOnlyId')
+                ->get();
+            return $returns;
+        }
     }
 
     //处理阅读人数
@@ -139,6 +150,28 @@ class BlogController extends Controller
             ->take(8)
             ->get();
         return json_encode(['msg'=>0,'data'=>$title],JSON_UNESCAPED_UNICODE);
+    }
+
+    //獲取評論信息
+    public function GetComment(Request $request){
+        //验证字段
+         if(is_null($request->blogId)||$request->blogId==""){
+             $msg[] = '请选择想要获取的文章';
+             $msg_code = 1;
+             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+         }
+         //验证该博客是否存在
+        $isset = BlogInfo::where('blogOnlyId','=',$request->blogId)->get();
+        if(isset($isset)){
+            $comment = Comment::where('blogId','=',$request->blogId)->get();
+            $msg_code = 0;
+            return json_encode(['msg_code'=>$msg_code,'data'=>$comment]);
+        }else{
+            $msg[]='博客不存在！';
+            $msg_code = 1;
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+
     }
 
 }

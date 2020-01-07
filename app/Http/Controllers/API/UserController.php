@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\BlogInfo;
+use App\Comment;
 use App\UserAction;
 use DemeterChain\B;
 use Faker\Provider\Uuid;
@@ -21,8 +22,126 @@ class UserController extends Controller
     //查看自己的信息
     //修改自己的信息
     //查看他人的信息
-    //点赞微博
+    //点赞博客
+    //評論他人博客
+    public function Comment(Request $request){
+        //是否选中
+        if(is_null($request->blogOnlyId)){
+            $msg_code = "1";
+            $msg[]='请选择评价的博客！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+        //是否存在
+        if(is_null(BlogInfo::where(['blogOnlyId','=',$request->blogOnlyId],['isSuspicious','=',0])->first())){
+            $msg_code = "1";
+            $msg[]='博客已被删除或涉及敏感信息无法评价！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+        //评论内容
+        if(is_null($request->comment)){
+            $msg_code = "1";
+            $msg[]='评论内容不能为空！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+        $request->comment = strip_tags($request->comment);
+        //插入新增数据
+        $commentinfo = new Comment();
+        $commentinfo->commentOnlyId = \Ramsey\Uuid\Uuid::uuid1();
+        $commentinfo->userId = Auth::guard('api')->user()->userOnlyId;
+        $commentinfo->content = $request->comment;
+        $commentinfo->blogId = $request->blogOnlyId;
+        $commentinfo->likeNum = 0;
+        $commentinfo->noLikeNum = 0;
+        $commentinfo->IsHide = 0;
+        if($commentinfo->save()){
+            $msg_code = "0";
+            $msg[]='评论成功！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }else{
+            $msg_code = "1";
+            $msg[]='评论失败！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+
+
+    }
     //点赞/点踩评论
+    public function LikeOnLike(Request $request){
+        //是否选中
+        if(is_null($request->commentOnlyId)){
+            $msg_code = "1";
+            $msg[]='请选择点赞/踩的评论！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+        //是否存在
+        if(is_null(Comment::where(['commentOnlyId','=',$request->commentOnlyId],['IsHide','=',0])->first())){
+            $msg_code = "1";
+            $msg[]='该评论已经被删除！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+
+        $commentinfo = Comment::where('commentOnlyId','=',$request->commentOnlyId)->fitst();
+        if(is_null($request->IsLike)?1:$request->IsLike == 1)
+        {
+            //点赞
+            $commentinfo->likeNum += 1;
+        }
+        else{
+            //点踩
+            $commentinfo->noLikeNum += 1;
+        }
+        if($commentinfo->save()){
+            $msg_code = "0";
+            $msg[]='OK';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }else{
+            $msg_code = "1";
+            $msg[]='NO';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+
+    }
+
+    //隐藏评论(仅限博主)
+    public function DelComment(Request $request){
+        //验证是否选择删除列
+        if(is_null($request->commentOnlyId)){
+            $msg_code = "1";
+            $msg[]='请选择删除的评论！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+        //验证评论是否存在
+        $IsHave = Comment::where('commentOnlyId','=',$request->commentOnlyId)->get();
+        if(!isset($IsHave)){
+            $msg_code = "1";
+            $msg[]='该评论已被删除';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+        //判断当前用户是否有删除评论的权力
+        $info = BlogInfo::where('blogOnlyId','=',$request->blogOnlyId)
+        ->get();
+        $userid = $info->user_id;
+        if($userid != Auth::guard('api')->user()->userOnlyId){
+            $msg_code = "1";
+            $msg[]='您不能删除这条评论！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+
+        //隐藏评论(假删除)
+        $commentinfo = Comment::where('commentOnlyId','=',$request->commentOnlyId)->get();
+        $commentinfo->IsHide = 1;
+        if($commentinfo->save()){
+            $msg_code = "0";
+            $msg[]='删除成功！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }else{
+            $msg_code = "1";
+            $msg[]='删除失败！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+
+    }
+
     //查看自己历史查看记录
     public function History(){
         $history = UserAction::where('userId','=',Auth::guard('api')->user()->userOnlyId)

@@ -21,6 +21,7 @@ class CreateTComment extends Migration
             $table->string('blogId',36);   //评论的文章
             $table->integer('likeNum')->default(0);           //评论点赞人数
             $table->integer('noLikeNum')->default(0);         //
+            $table->integer('IsHide')->default(0);            //是否隐藏 默认0 表示不隐藏
             $table->timestamps();
 
         });

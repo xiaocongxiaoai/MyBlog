@@ -79,6 +79,12 @@ Route::group(['middleware' => 'auth.api'], function () {
     Route::get('/blog/BlogTitle','API\BlogController@BlogTitle');
     //上传图片
     Route::post('/blog/ImgUp','API\ImgController@ImgUp');
+    //获取文章评论
+    //Route::get('/blog/getComment','API\BlogController@GetComment');
+    //隐藏评论
+    Route::post('/blog/DelComment','API\UserController@DelComment');
+    //点赞/点踩
+    Route::get('/blog/LikeOnLike','API\UserController@LikeOnLike');
 
     Route::post('/test',function (){
         return json_encode(['test'=>'求求你'],JSON_UNESCAPED_UNICODE);
