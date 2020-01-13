@@ -22,7 +22,34 @@ class UserController extends Controller
     //查看自己的信息
     //修改自己的信息
     //查看他人的信息
+    //评论置顶
+
     //点赞博客
+    public function Like(Request $request){
+        //是否选中
+        if(is_null($request->blogOnlyId)){
+            $msg_code = "1";
+            $msg[]='请选择点赞的博客！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+        //是否存在
+        if(is_null(BlogInfo::where(['blogOnlyId','=',$request->blogOnlyId],['isSuspicious','=',0])->first())){
+            $msg_code = "1";
+            $msg[]='博客已被删除或涉及敏感信息无法评价！';
+            return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+        }
+        //点赞
+        $bloginfo = BlogInfo::where('blogOnlyId','=',$request->blogOnlyId)->first();
+        $bloginfo->likeNum += 1;
+        if($bloginfo->save()){
+            $msg_code = "0";
+            $msg[]='OK';
+        }else{
+            $msg_code = "0";
+            $msg[]='NO';
+        }
+        return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+    }
     //評論他人博客
     public function Comment(Request $request){
         //是否选中

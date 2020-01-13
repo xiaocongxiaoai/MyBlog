@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/WebSocket.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/363e91ec-30f5-11ea-864c-080027544624-运行pecl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/3ff97110-30f6-11ea-a25d-080027544624-编辑phpini文件2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/56bb3f14-30f6-11ea-9aef-080027544624-是否添加成功swoole.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/6ca242d0-30f3-11ea-a22d-080027544624-登录homestead.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/d913332a-30f3-11ea-9eed-080027544624-更新pecl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/e198230c-30f3-11ea-affa-080027544624-更新pecl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/e58ee3c2-30f5-11ea-8e67-080027544624-编辑phpini文件.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/tcp_client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/tcp_server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/testSwoole.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -141,7 +150,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/bootstrap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -251,7 +260,10 @@
       <workItem from="1577431961883" duration="4169000" />
       <workItem from="1578278949509" duration="11244000" />
       <workItem from="1578296462305" duration="4883000" />
-      <workItem from="1578357311512" duration="247000" />
+      <workItem from="1578357311512" duration="10668000" />
+      <workItem from="1578445904659" duration="3619000" />
+      <workItem from="1578471271840" duration="906000" />
+      <workItem from="1578879458762" duration="82000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -309,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575882197323</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="增加評論接口、點贊、點踩，查看評論等一系列增刪查改接口&#10;更改數據庫結構">
+      <created>1578357638519</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1578357638519</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,6 +387,7 @@
     <MESSAGE value="新增后台登陆页面&#10;更新数据迁移文件&#10;增加接口" />
     <MESSAGE value="新增接口&#10;后端登录页面、模板页面" />
     <MESSAGE value="登录功能、博客审核功能中数据显示、贝叶斯预测算法修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="登录功能、博客审核功能中数据显示、贝叶斯预测算法修改" />
+    <MESSAGE value="增加評論接口、點贊、點踩，查看評論等一系列增刪查改接口&#10;更改數據庫結構" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加評論接口、點贊、點踩，查看評論等一系列增刪查改接口&#10;更改數據庫結構" />
   </component>
 </project>

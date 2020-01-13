@@ -85,6 +85,10 @@ Route::group(['middleware' => 'auth.api'], function () {
     Route::post('/blog/DelComment','API\UserController@DelComment');
     //点赞/点踩
     Route::get('/blog/LikeOnLike','API\UserController@LikeOnLike');
+    //評論博客
+    Route::post('/blog/Comment','API\UserController@Comment');
+    //点赞博客
+    Route::get('/blog/Like','API\UserController@Like');
 
     Route::post('/test',function (){
         return json_encode(['test'=>'求求你'],JSON_UNESCAPED_UNICODE);
