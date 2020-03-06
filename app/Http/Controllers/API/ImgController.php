@@ -37,7 +37,7 @@ class ImgController extends Controller
 //            $photo->move($Path, $filename);
 //        }
         $photos->move('../public/img', $filename);
-        $filepath = "10.20.38.251:8000/img/".$filename;
+        $filepath = "xiecongcong.test:8000/img/".$filename;
         return json_encode(['msg_code'=>0,'path'=> $filepath],JSON_UNESCAPED_UNICODE);
     }
 

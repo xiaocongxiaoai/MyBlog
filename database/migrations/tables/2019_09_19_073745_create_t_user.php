@@ -24,6 +24,8 @@ class CreateTUser extends Migration
             $table->integer('isPublic')->default(0);
             $table->string('api_token',255);
             $table->integer('role')->default(0);
+            $table->json('doLikeComment');  //点过评论赞的数组记录
+            $table->json('doLikeBlog');  //点过博客赞的数组记录
             $table->timestamps();
 
         });

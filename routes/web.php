@@ -40,4 +40,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/userinfo','Admin\AdminController@UserInfo');
     Route::get('/logout','Admin\AdminController@Logout');
     Route::get('/blogList','Admin\AdminController@BlogList');
+    Route::get('/GetBlogInfo','Admin\AdminController@GetBlogInfo');
 });

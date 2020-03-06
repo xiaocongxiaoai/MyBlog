@@ -81,6 +81,19 @@ class AdminController extends Controller
             ->join('t_blog_type','t_blog_info.blogTypeId','=','t_blog_type.blogTypeOnlyId')
             ->select('t_blog_info.*','t_user.name','t_blog_type.name as type')
             ->offset($current)->limit($count)->get();
-        return json_encode(['msg_code'=>0,'data'=>$blogInfos],JSON_UNESCAPED_UNICODE);
+        $counts = BlogInfo::all()->count();
+
+        return json_encode(['msg_code'=>0,'data'=>$blogInfos,'counts'=>$counts],JSON_UNESCAPED_UNICODE);
+    }
+
+    public function GetBlogInfo(Request $request){
+        if(is_null($request->blogOnlyId)){
+
+            return json_encode(['msg_code'=>1,'msg'=>'请选择想查看的博客'],JSON_UNESCAPED_UNICODE);
+        }
+        $bloginfo = BlogInfo::where('blogOnlyId','=',$request->blogOnlyId)->get();
+
+        return json_encode(['msg_code'=>0,'msg'=>'OK','data'=>$bloginfo]);
+
     }
 }

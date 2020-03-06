@@ -22,6 +22,7 @@ class CreateTComment extends Migration
             $table->integer('likeNum')->default(0);           //评论点赞人数
             $table->integer('noLikeNum')->default(0);         //
             $table->integer('IsHide')->default(0);            //是否隐藏 默认0 表示不隐藏
+            $table->integer('IsLiked')->default(0);           //这条评论是否被当前用户点赞
             $table->timestamps();
 
         });

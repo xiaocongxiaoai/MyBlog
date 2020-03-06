@@ -2,21 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/WebSocket.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/363e91ec-30f5-11ea-864c-080027544624-运行pecl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/3ff97110-30f6-11ea-a25d-080027544624-编辑phpini文件2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/56bb3f14-30f6-11ea-9aef-080027544624-是否添加成功swoole.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/6ca242d0-30f3-11ea-a22d-080027544624-登录homestead.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/d913332a-30f3-11ea-9eed-080027544624-更新pecl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/e198230c-30f3-11ea-affa-080027544624-更新pecl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/e58ee3c2-30f5-11ea-8e67-080027544624-编辑phpini文件.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/tcp_client.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/tcp_server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/testSwoole.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/317b972c-3c26-11ea-83e2-080027d0eccd-u=303350860,2970778985&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/4ade7b92-3c23-11ea-8245-080027d0eccd-13429147-32832d6b08b108c4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/543a1bd0-3c26-11ea-b4b9-080027d0eccd-13429147-32832d6b08b108c4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/568730a2-3c22-11ea-9c1c-080027d0eccd-u=303350860,2970778985&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/a319b17e-3c22-11ea-972d-080027d0eccd-u=303350860,2970778985&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ImgController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ImgController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/blogReview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/blogReview.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -264,6 +264,12 @@
       <workItem from="1578445904659" duration="3619000" />
       <workItem from="1578471271840" duration="906000" />
       <workItem from="1578879458762" duration="82000" />
+      <workItem from="1578897283679" duration="7412000" />
+      <workItem from="1579054221016" duration="25000" />
+      <workItem from="1579156633887" duration="1261000" />
+      <workItem from="1579571737672" duration="20261000" />
+      <workItem from="1583127700653" duration="969000" />
+      <workItem from="1583199509550" duration="16544000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>

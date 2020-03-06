@@ -89,6 +89,9 @@ class BlogController extends Controller
 
         //获取评论
         $comment = $this->Comment($request->blogId);
+        //评论是否被当前用户赞过
+        $comment = $this->IsLike($comment);
+
         //处理阅读人数
         $this->ReadNum($request->blogId);
 
@@ -101,7 +104,7 @@ class BlogController extends Controller
             }elseif($bloginfo->isSusoicious == 3){
                 return json_encode(['msg_code'=>1,'msg'=>'该文章被多名用户举报，请等待管理员审核!'],JSON_UNESCAPED_UNICODE);
             }else{
-                return json_encode(['msg_code'=>0,'data'=>$bloginfo],JSON_UNESCAPED_UNICODE);
+                return json_encode(['msg_code'=>0,'data1'=>$bloginfo,'data2'=>$comment],JSON_UNESCAPED_UNICODE);
             }
        }else{
             return json_encode(['msg_code'=>0,'data1'=>$bloginfo,'data2'=>$comment],JSON_UNESCAPED_UNICODE);
@@ -120,16 +123,29 @@ class BlogController extends Controller
         {
             $returns = Comment::where('blogId','=',$blogId)
                 ->join('t_user','t_comment.userId','t_user.userOnlyId')
+                ->select('t_comment.*','t_user.name')
                 ->get();
-            return $returns;
         }
         else{
             $returns = Comment::where('blogId','=',$blogId)
                 ->where('IsHide','=',0)
                 ->join('t_user','t_comment.userId','t_user.userOnlyId')
+                ->select('t_comment.*','t_user.name')
                 ->get();
-            return $returns;
         }
+        return $returns;
+    }
+
+    //判断博客评论中有几个是被当前用户赞过的
+    public function IsLike($comment){
+        $userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->value('doLikeComment');
+        $array = is_null(json_decode($userinfo))?[]:json_decode($userinfo);
+        foreach ($comment as $com){
+            if(in_array($com->commentOnlyId,$array)){
+                $com->IsLiked = 1;
+            }
+        }
+        return $comment;
     }
 
     //处理阅读人数
@@ -140,7 +156,7 @@ class BlogController extends Controller
         }
         $bloginfo->save();
     }
-
+    //
     //博客标题返回
     public function BlogTitle(Request $request){
         $title = DB::table('t_blog_info')
@@ -171,6 +187,8 @@ class BlogController extends Controller
             $msg_code = 1;
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
         }
+
+
 
     }
 

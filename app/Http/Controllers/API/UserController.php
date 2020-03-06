@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\BlogInfo;
 use App\Comment;
+use App\User;
 use App\UserAction;
 use DemeterChain\B;
 use Faker\Provider\Uuid;
@@ -33,7 +34,7 @@ class UserController extends Controller
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
         }
         //是否存在
-        if(is_null(BlogInfo::where(['blogOnlyId','=',$request->blogOnlyId],['isSuspicious','=',0])->first())){
+        if(is_null(BlogInfo::where('blogOnlyId','=',$request->blogOnlyId)->where('isSuspicious','=',0)->first())){
             $msg_code = "1";
             $msg[]='博客已被删除或涉及敏感信息无法评价！';
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
@@ -59,7 +60,7 @@ class UserController extends Controller
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
         }
         //是否存在
-        if(is_null(BlogInfo::where(['blogOnlyId','=',$request->blogOnlyId],['isSuspicious','=',0])->first())){
+        if(is_null(BlogInfo::where('blogOnlyId','=',$request->blogOnlyId)->where('isSuspicious','=',0)->first())){
             $msg_code = "1";
             $msg[]='博客已被删除或涉及敏感信息无法评价！';
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
@@ -94,6 +95,7 @@ class UserController extends Controller
     }
     //点赞/点踩评论
     public function LikeOnLike(Request $request){
+
         //是否选中
         if(is_null($request->commentOnlyId)){
             $msg_code = "1";
@@ -101,23 +103,43 @@ class UserController extends Controller
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
         }
         //是否存在
-        if(is_null(Comment::where(['commentOnlyId','=',$request->commentOnlyId],['IsHide','=',0])->first())){
+        if(is_null(Comment::where('commentOnlyId','=',$request->commentOnlyId)->where('IsHide','=',0)->first())){
             $msg_code = "1";
             $msg[]='该评论已经被删除！';
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
         }
+        //是否已经点过赞
+        //转为数组做判断
 
-        $commentinfo = Comment::where('commentOnlyId','=',$request->commentOnlyId)->fitst();
+        $infos=User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->value('doLikeComment');
+        $array = is_null(json_decode($infos))?[]:json_decode($infos);
+        if(!is_null($infos)){
+            if(in_array($request->commentOnlyId,$array)){
+//                $msg_code = "1";
+//                $msg[]='已经点赞过该评论！';
+//                return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
+                $request->IsLike = 0;
+            }
+        }
+
+        $commentinfo = Comment::where('commentOnlyId','=',$request->commentOnlyId)->first();
+        $userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->first();
         if(is_null($request->IsLike)?1:$request->IsLike == 1)
         {
+
             //点赞
             $commentinfo->likeNum += 1;
+            array_push($array,$request->commentOnlyId);
+            $userinfo->doLikeComment = json_encode($array) ;
         }
         else{
-            //点踩
-            $commentinfo->noLikeNum += 1;
+            //取消点赞
+            $commentinfo->likeNum -= 1;
+            $array = array_diff($array,[$request->commentOnlyId]);
+            $userinfo->doLikeComment = is_null(json_encode($array))?null:json_encode($array);
+
         }
-        if($commentinfo->save()){
+        if($commentinfo->save()&&$userinfo->save()){
             $msg_code = "0";
             $msg[]='OK';
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
@@ -292,6 +314,10 @@ class UserController extends Controller
 
     //更改我写的blog
     public function BlogChange(Request $request){
+        //验证输入信息
+        if(is_null($request->blogId)){
+            return json_encode(['msg_code'=>1,'msg'=>'选择想要修改的博客！'],JSON_UNESCAPED_UNICODE);
+        }
         //验证blog是否存在
         $bloginfo = BlogInfo::where('blogOnlyId','=',$request->blogId)->first();
         if(is_null($bloginfo)){
@@ -318,14 +344,14 @@ class UserController extends Controller
 
         //更改blog
         $bloginfo->blogTitle = $request->title;
-        $bloginfo->blogOnlyId = $request->blogOnlyId;
+        $bloginfo->blogOnlyId = $request->blogId;
         $bloginfo->blogContent = $request->blogContent;
         $bloginfo->blogTypeId = $request->blogType;
         $bloginfo->blogUserTypeId = is_null($request->blogUserType)?"":$request->blogUserType;
-        $bloginfo->blogTag = is_null($request->blogTag)?"无":$request->blogUserType;
+        $bloginfo->blogTag = is_null($request->blogTag)?"无":$request->blogTag;
         $bloginfo->isPublic = is_null($request->isPublic)?1:$request->isPublic;
         if($bloginfo->save()){
-            return json_encode(['msg_code'=>0,'msg'=>'更新成功！']);
+            return json_encode(['msg_code'=>0,'msg'=>'更新成功！',JSON_UNESCAPED_UNICODE]);
         }else{
             return json_encode(['msg_code'=>1,'msg'=>'出现未知错误请联系管理员！'],JSON_UNESCAPED_UNICODE);
         }
@@ -384,5 +410,4 @@ class UserController extends Controller
             return 0;//"你是个懂礼貌的好孩子";
         }
     }
-
 }
