@@ -91,9 +91,15 @@ class AdminController extends Controller
 
             return json_encode(['msg_code'=>1,'msg'=>'请选择想查看的博客'],JSON_UNESCAPED_UNICODE);
         }
-        $bloginfo = BlogInfo::where('blogOnlyId','=',$request->blogOnlyId)->get();
+//        $bloginfo = BlogInfo::where('blogOnlyId','=',$request->blogOnlyId)
+//            ->join('t_user','t_blog_info.user_id','=','t_user.userOnlyId')
+//            ->get();
 
-        return json_encode(['msg_code'=>0,'msg'=>'OK','data'=>$bloginfo]);
+          $bloginfo = DB::table('t_blog_info')
+              ->where('blogOnlyId','=',$request->blogOnlyId)
+              ->join('t_user','t_blog_info.user_id','=','t_user.userOnlyId')
+              ->get(['t_blog_info.*','t_user.name']);
+        return json_encode(['msg_code'=>0,'msg'=>'OK','data'=>$bloginfo],JSON_UNESCAPED_UNICODE);
 
     }
 }

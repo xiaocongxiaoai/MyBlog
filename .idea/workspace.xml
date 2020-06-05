@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/317b972c-3c26-11ea-83e2-080027d0eccd-u=303350860,2970778985&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/4ade7b92-3c23-11ea-8245-080027d0eccd-13429147-32832d6b08b108c4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/543a1bd0-3c26-11ea-b4b9-080027d0eccd-13429147-32832d6b08b108c4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/568730a2-3c22-11ea-9c1c-080027d0eccd-u=303350860,2970778985&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/a319b17e-3c22-11ea-972d-080027d0eccd-u=303350860,2970778985&amp;fm=26&amp;gp=0.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ImgController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ImgController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080931_create_t_comment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/blogReview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/blogReview.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +141,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -161,19 +152,19 @@
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\xcc\objects\MyBlog\public\bootstrap" />
-      <recent name="D:\xcc\objects\MyBlog\public" />
-      <recent name="D:\xcc\code\Blog\public\img" />
-      <recent name="D:\xcc\code\Blog\resources\views\admin" />
-      <recent name="D:\xcc\code\Blog\resources\img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\xcc\objects\MyBlog\resources\views" />
       <recent name="D:\xcc\code\Blog\resources\views\img" />
       <recent name="D:\xcc\code\Blog\database\migrations\tables" />
       <recent name="D:\xcc\code\Blog\app\Http\Controllers\API\Auth" />
       <recent name="D:\xcc\code\Blog\app\Http\Controllers\API" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xcc\objects\MyBlog\database\migrations" />
+      <recent name="D:\xcc\objects\MyBlog\public\bootstrap" />
+      <recent name="D:\xcc\objects\MyBlog\public" />
+      <recent name="D:\xcc\code\Blog\public\img" />
+      <recent name="D:\xcc\code\Blog\resources\views\admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -269,7 +260,10 @@
       <workItem from="1579156633887" duration="1261000" />
       <workItem from="1579571737672" duration="20261000" />
       <workItem from="1583127700653" duration="969000" />
-      <workItem from="1583199509550" duration="16544000" />
+      <workItem from="1583199509550" duration="16818000" />
+      <workItem from="1583734612764" duration="10169000" />
+      <workItem from="1590998147406" duration="35000" />
+      <workItem from="1591258862294" duration="8858000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -334,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578357638519</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="日常维护">
+      <created>1583487123656</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1583487123657</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,6 +395,7 @@
     <MESSAGE value="新增接口&#10;后端登录页面、模板页面" />
     <MESSAGE value="登录功能、博客审核功能中数据显示、贝叶斯预测算法修改" />
     <MESSAGE value="增加評論接口、點贊、點踩，查看評論等一系列增刪查改接口&#10;更改數據庫結構" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加評論接口、點贊、點踩，查看評論等一系列增刪查改接口&#10;更改數據庫結構" />
+    <MESSAGE value="日常维护" />
+    <option name="LAST_COMMIT_MESSAGE" value="日常维护" />
   </component>
 </project>

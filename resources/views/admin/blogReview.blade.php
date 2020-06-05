@@ -61,9 +61,9 @@
         </el-table-column>
     </el-table>
     <el-dialog title="审核页面" :visible.sync="dialogFormVisible">
-        <el-form ref="form" :model="form" :label-position = "left">
+        <el-form ref="form" :model="form">
             <el-form-item label="博客标题">
-                <el-input v-model="form.name"></el-input>
+                <el-input v-model="form.title"></el-input>
             </el-form-item>
             <el-form-item label="作者">
                 <el-input v-model="form.name"></el-input>
@@ -195,8 +195,13 @@
     {{--审核--}}
 {{--        console.log(row.blogOnlyId);--}}
         this.dialogFormVisible = true;
+        console.log(row.blogOnlyId)
         var that = this
-        that.form = {}
+        that.form = {
+                     blogOnlyId: '',
+                     title : '',
+                     name : '',
+                     content: ''};
         $.ajax({
         type: 'GET',
         url: '/GetBlogInfo',
@@ -206,8 +211,18 @@
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data){
+             that.form.title = data.data[0].blogTitle
+             that.form.name = data.data[0].name
+             that.form.content = data.data[0].blogContent
+             that.form.blogOnlyId = data.data[0].blogOnlyId
+        },
+        error: function(xhr, type){
+            alert('Ajax error!')
+            }
+        })
 
-        }
+
+    }
 
 @endsection
 {{--页面加载函数--}}

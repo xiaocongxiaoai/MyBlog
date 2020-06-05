@@ -90,9 +90,6 @@ Route::group(['middleware' => 'auth.api'], function () {
     //点赞博客
     Route::get('/blog/Like','API\UserController@Like');
 
-    Route::post('/test',function (){
-        return json_encode(['test'=>'求求你'],JSON_UNESCAPED_UNICODE);
-    });
 
 });
 
