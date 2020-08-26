@@ -29,5 +29,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'turingapi' => [
+        'url' => 'http://openapi.tuling123.com/openapi/api/v2',
+        'key' => env('ROBOT_KEY')
+    ]
 
 ];

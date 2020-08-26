@@ -1,12 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="">
+    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="数据迁移文件修改">
+      <change afterPath="$PROJECT_DIR$/app/Count.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Events/WorkerStartEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/UserInfoRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/SmsServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Rules/phone.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Authenticatable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Facades/Room.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Facades/Websocket.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Parser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Pusher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Rooms/RedisRoom.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Rooms/RoomContract.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Rooms/TableRoom.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/SocketIO/Packet.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/SocketIO/SocketIOParser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/SocketIO/Strategies/HeartbeatStrategy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/WebSocket.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/WebSocketService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/fswatch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/inotify" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/laravels" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/laravels.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/sms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_29_073221_create_counts_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/34fa2fa4-e747-11ea-969e-08002745c6b0-微信截图_20200826094131.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/4fe853e0-e73d-11ea-9e6c-08002745c6b0-微信截图_20200826094131.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/62c44338-a963-11ea-9d1d-080027d0eccd-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/websocket.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/laravels.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/laravels.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Blog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_19_073745_create_t_user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/blogReview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/blogReview.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APIRegisertController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APIRegisertController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/WebToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/WebToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -131,6 +168,13 @@
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
       <path value="$PROJECT_DIR$/vendor/components/jquery" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/swoole/ide-helper" />
+      <path value="$PROJECT_DIR$/vendor/hhxsv5/laravel-s" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1R0CpLykZmZxz1CuX51b4KelLvm" />
@@ -141,7 +185,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -149,7 +193,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -263,7 +307,11 @@
       <workItem from="1583199509550" duration="16818000" />
       <workItem from="1583734612764" duration="10169000" />
       <workItem from="1590998147406" duration="35000" />
-      <workItem from="1591258862294" duration="8858000" />
+      <workItem from="1591258862294" duration="90667000" />
+      <workItem from="1594000673693" duration="19750000" />
+      <workItem from="1597214049057" duration="4662000" />
+      <workItem from="1597223729527" duration="42000" />
+      <workItem from="1597993749191" duration="43839000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -335,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583487123657</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="数据迁移文件修改">
+      <created>1591330174089</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1591330174089</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,6 +451,7 @@
     <MESSAGE value="登录功能、博客审核功能中数据显示、贝叶斯预测算法修改" />
     <MESSAGE value="增加評論接口、點贊、點踩，查看評論等一系列增刪查改接口&#10;更改數據庫結構" />
     <MESSAGE value="日常维护" />
-    <option name="LAST_COMMIT_MESSAGE" value="日常维护" />
+    <MESSAGE value="数据迁移文件修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="数据迁移文件修改" />
   </component>
 </project>

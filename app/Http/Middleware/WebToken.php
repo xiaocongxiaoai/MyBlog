@@ -17,7 +17,7 @@ class WebToken
     public function handle($request, Closure $next)
     {
         if (Auth::guard('api')->guest()) {
-            return response()->json(['code' => 401,'msg' => '未设置token'])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+            return response()->json(['msg_code' => 1,'msg' => '未设置token'])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
         }
         return $next($request);
     }

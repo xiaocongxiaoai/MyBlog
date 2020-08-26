@@ -110,21 +110,21 @@ class BlogController extends Controller
             return json_encode(['msg_code'=>0,'data1'=>$bloginfo,'data2'=>$comment],JSON_UNESCAPED_UNICODE);
         }
     }
-    //blog系统标签展示
-    public function BlogTag(){
-        $blogtag = BlogTag::get(['content']);
-        return json_encode(['msg_code'=>0,'data'=>$blogtag],JSON_UNESCAPED_UNICODE);
-    }
+            //blog系统标签展示
+            public function BlogTag(){
+            $blogtag = BlogTag::get(['content']);
+            return json_encode(['msg_code'=>0,'data'=>$blogtag],JSON_UNESCAPED_UNICODE);
+        }
 
-    //获取评论信息
-    public function Comment($blogId){
-        //管理员可获取所有评论
-        if(Auth::guard('api')->user()->role == 1)
-        {
-            $returns = Comment::where('blogId','=',$blogId)
-                ->join('t_user','t_comment.userId','t_user.userOnlyId')
-                ->select('t_comment.*','t_user.name')
-                ->get();
+            //获取评论信息
+            public function Comment($blogId){
+            //管理员可获取所有评论
+            if(Auth::guard('api')->user()->role == 0)
+            {
+                $returns = Comment::where('blogId','=',$blogId)
+                    ->join('t_user','t_comment.userId','t_user.userOnlyId')
+                    ->select('t_comment.*','t_user.name')
+                    ->get();
         }
         else{
             $returns = Comment::where('blogId','=',$blogId)
@@ -179,7 +179,10 @@ class BlogController extends Controller
          //验证该博客是否存在
         $isset = BlogInfo::where('blogOnlyId','=',$request->blogId)->get();
         if(isset($isset)){
-            $comment = Comment::where('blogId','=',$request->blogId)->get();
+            $comment = Comment::where('blogId','=',$request->blogId)
+                ->where('IsHide','=',0)
+                ->get();
+            //dd($comment);
             $msg_code = 0;
             return json_encode(['msg_code'=>$msg_code,'data'=>$comment]);
         }else{

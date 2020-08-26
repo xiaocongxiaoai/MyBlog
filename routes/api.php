@@ -56,6 +56,7 @@ Route::get('/blog/loginOut','API\Auth\APILoginOutController@LoginOut');
 
 
 
+
 Route::group(['middleware' => 'auth.api'], function () {
     //创建博客
     Route::post('/blog/create','API\UserController@createBlog');
@@ -89,6 +90,18 @@ Route::group(['middleware' => 'auth.api'], function () {
     Route::post('/blog/Comment','API\UserController@Comment');
     //点赞博客
     Route::get('/blog/Like','API\UserController@Like');
+    //删除博客
+    Route::get('/blog/Delete','API\UserController@Delete');
+    //获取当前用户
+    Route::get('/blog/User','API\UserController@GetUser');
+    //获取用户列表
+    Route::get('/blog/getUserList','API\UserController@GetUserList');
+    //查看自己信息
+    Route::get('/blog/getMyInfo','API\UserController@getMyInfo');
+    //修改用户基本信息
+    Route::post('/blog/EditMyInfo','API\UserController@EditMyInfo');
+    //用户登录状态下修改密码
+    Route::post('/blog/UpPassword','API\UserController@Uppassword');
 
 
 });

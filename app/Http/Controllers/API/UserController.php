@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\BlogInfo;
 use App\Comment;
+use App\Http\Requests\UserInfoRequest;
 use App\User;
 use App\UserAction;
 use DemeterChain\B;
@@ -15,14 +16,111 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
 {
-    //查询用户信息
+    //查询用户信息List
+    public function GetUserList(Request $request){
+        //当前页
+        $index = intval(is_null($request->index)?1:$request->index);
+        //每页展示数
+        $pagecount =intval(is_null($request->pagecount)?30:$request->pagecount);
+        //用户名称模糊查询
+        //数据总数
+        $userNum = User::
+        where('isPublic','=',1)
+            ->where('name','like','%'.$request->userName.'%')
+            ->count();
+        //blog当前页数据
+        $current = ($index-1)*$pagecount;    //开始取数据的位置
+        $goodinfo = User::
+            where('name','like','%'.$request->userName.'%')
+            ->where('isPublic','=',1)
+            ->offset($current)->limit($pagecount)
+            ->get(['name','userOnlyId','email','summary']);
+        //获取用户名下3篇博客信息
+
+        foreach ($goodinfo as $userinfo){
+            $bloginfo = BlogInfo::where('user_id','=',$userinfo->userOnlyId)->take(3)->get(['blogOnlyId','blogTitle','blogContent','created_at']);
+            $userinfo->blog = $bloginfo;
+            $userinfo->blogcount = BlogInfo::where('user_id','=',$userinfo->userOnlyId)->count();
+      }
+        return json_encode(['msg_code'=>'0','userNum'=>$userNum,'data'=>$goodinfo],JSON_UNESCAPED_UNICODE);
+    }
     //查看自己的信息
+    public function getMyInfo(){
+        //
+        //用户全部信息
+        $userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->get(['name','userOnlyId','email','summary','phoneNum']);
+        return json_encode(['msg_code'=>'0','data'=>$userinfo],JSON_UNESCAPED_UNICODE);
+    }
     //修改自己的信息
+    public function EditMyInfo(UserInfoRequest $request){
+        /*****
+         * 昵称username
+         * 邮箱email
+         * 简介summary
+         * 联系方式:电话phoneNum
+         * 是否公开 ispublic
+         * *做表单验证姓名必填，email/phone做格式判断
+        *****/
+        $validated = $request->validated();
+
+        $userinfo = BlogInfo::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->first();
+        $userinfo->name = $request->username;
+        $userinfo->email = $request->email;
+        $userinfo->phoneNum = $request->phoneNum;
+        $userinfo->summary = $request->summary==null?"无":$request->summary;
+        $userinfo->isPublic = $request->ispublic==null?1:$request->ispublic;
+        if($userinfo->save()){
+            return json_encode(['msg_code'=>'0','data'=>'修改成功！'],JSON_UNESCAPED_UNICODE);
+        }else{
+            return json_encode(['msg_code'=>'1','data'=>'修改失败！'],JSON_UNESCAPED_UNICODE);
+        }
+    }
     //查看他人的信息
+    public function GetUser(Request $request){
+        if(is_null($request->userOnlyId)){
+            return json_encode(['msg_code'=>'1','data'=>'请选择一个用户在点击查看！'],JSON_UNESCAPED_UNICODE);
+        }
+        //当前页
+        $index = intval(is_null($request->index)?1:$request->index);
+        //每页展示数
+        $pagecount =intval(is_null($request->pagecount)?30:$request->pagecount);
+
+        $current = ($index-1)*$pagecount;    //开始取数据的位置
+        //用户的基本信息
+        $userinfo = User::where('userOnlyId','=',$request->userOnlyId)->get(['name','userOnlyId','email','summary','phoneNum']);
+        //用户名下的正常blog
+        $blogList = DB::select('
+            SELECT blogOnlyId,blogTitle,case when CHAR_LENGTH(blogContent)>30 then CONCAT(left(blogContent,100),\'...\') else blogContent end as blogContent, 
+			blogUserTypeId,blogTag,readNum,likeNum from t_blog_info where isPublic = 1 and isSuspicious = 0 and user_id = \''.$request->userOnlyId.'\'');
+        //获取到的bloglist是一个数组 运用数组截取片段函数array_slice，即可完成分页操作
+        $blogList = array_slice($blogList,$current,$pagecount);
+        //$blogList = $blogList->offset($current)->limit($pagecount);
+        return json_encode(['msg_code'=>'0','data'=>['userInfo'=>$userinfo,'blogList'=>$blogList]],JSON_UNESCAPED_UNICODE);
+    }
+
+
+    //登录状态下用户密码修改
+    public function Uppassword(Request $request){
+        //和原有的密码做对比，看是否输入正确，正确则输入新密码
+        $userinfo= User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->get();
+        if(Hash::check($request->oldpassword,$userinfo->password)){
+            $userinfo->password = Hash::make($request->newpassword);
+            if($userinfo->save()){
+                return json_encode(['ms_code'=>0,'Data'=>'修改成功！'],JSON_UNESCAPED_UNICODE);
+            }else{
+                return json_encode(['ms_code'=>1,'Data'=>'保存错误！'],JSON_UNESCAPED_UNICODE);
+            }
+        }else{
+            return json_encode(['ms_code'=>1,'Data'=>'密码不和原来一致！'],JSON_UNESCAPED_UNICODE);
+        }
+
+    }
+
     //评论置顶
 
     //点赞博客
@@ -95,7 +193,6 @@ class UserController extends Controller
     }
     //点赞/点踩评论
     public function LikeOnLike(Request $request){
-
         //是否选中
         if(is_null($request->commentOnlyId)){
             $msg_code = "1";
@@ -168,7 +265,8 @@ class UserController extends Controller
         }
         //判断当前用户是否有删除评论的权力
         $info = BlogInfo::where('blogOnlyId','=',$request->blogOnlyId)
-        ->get();
+        ->first();
+
         $userid = $info->user_id;
         if($userid != Auth::guard('api')->user()->userOnlyId){
             $msg_code = "1";
@@ -177,7 +275,7 @@ class UserController extends Controller
         }
 
         //隐藏评论(假删除)
-        $commentinfo = Comment::where('commentOnlyId','=',$request->commentOnlyId)->get();
+        $commentinfo = Comment::where('commentOnlyId','=',$request->commentOnlyId)->first();
         $commentinfo->IsHide = 1;
         if($commentinfo->save()){
             $msg_code = "0";
@@ -410,4 +508,25 @@ class UserController extends Controller
             return 0;//"你是个懂礼貌的好孩子";
         }
     }
+
+    //删除博客
+    public function Delete(Request $request){
+        $bloginfo = BlogInfo::where('blogOnlyId','=',$request->blogId)->first();
+        if(is_null($bloginfo)){
+            return json_encode(['msg_code'=>1,'msg'=>'该博客已被删除或不存在！'],JSON_UNESCAPED_UNICODE);
+        }
+        //验证是否属于用户本身
+        if($bloginfo->user_id != Auth::guard('api')->user()->userOnlyId){
+            return json_encode(['msg_code'=>1,'msg'=>'你无法删除别人的博客！'],JSON_UNESCAPED_UNICODE);
+        }
+        if($bloginfo->delete())
+        {
+            return json_encode(['msg_code'=>0,'msg'=>'删除成功！'],JSON_UNESCAPED_UNICODE);
+        }else{
+            return json_encode(['msg_code'=>1,'msg'=>'删除失败！'],JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+
+
 }
