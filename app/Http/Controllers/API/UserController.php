@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\BlogInfo;
 use App\Comment;
 use App\Http\Requests\UserInfoRequest;
+use App\Img;
 use App\User;
 use App\UserAction;
 use DemeterChain\B;
@@ -40,10 +41,15 @@ class UserController extends Controller
             ->where('isPublic','=',1)
             ->offset($current)->limit($pagecount)
             ->get(['name','userOnlyId','email','summary']);
+
         //获取用户名下3篇博客信息
 
         foreach ($goodinfo as $userinfo){
-            $bloginfo = BlogInfo::where('user_id','=',$userinfo->userOnlyId)->take(3)->get(['blogOnlyId','blogTitle','blogContent','created_at']);
+            $bloginfo = BlogInfo::where('user_id','=',$userinfo->userOnlyId)
+                ->join('t_img','t_blog_info.user_id','t_img.user_id')
+                ->where('t_img.ImgType','=',1)
+                ->take(3)->get(['blogOnlyId','blogTitle','blogContent','created_at','t_img.ImgUrl'=>'BlogUrl']);
+            $userinfo->Url = Img::where('user_id','=',$userinfo->userOnlyId)->where('ImgType','=',0)->orderby('created_at','desc')->take(1)->get();
             $userinfo->blog = $bloginfo;
             $userinfo->blogcount = BlogInfo::where('user_id','=',$userinfo->userOnlyId)->count();
       }
@@ -53,7 +59,10 @@ class UserController extends Controller
     public function getMyInfo(){
         //
         //用户全部信息
-        $userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->get(['name','userOnlyId','email','summary','phoneNum']);
+        $userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)
+            ->join('t_img','t_user.userOnlyId','t_img.user_id')
+            ->where('t_img.ImgType','=',0)
+            ->get(['name','userOnlyId','email','summary','phoneNum','isPublic','ImgType']);
         return json_encode(['msg_code'=>'0','data'=>$userinfo],JSON_UNESCAPED_UNICODE);
     }
     //修改自己的信息
@@ -68,7 +77,7 @@ class UserController extends Controller
         *****/
         $validated = $request->validated();
 
-        $userinfo = BlogInfo::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->first();
+        $userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->first();
         $userinfo->name = $request->username;
         $userinfo->email = $request->email;
         $userinfo->phoneNum = $request->phoneNum;
@@ -96,27 +105,29 @@ class UserController extends Controller
         //用户名下的正常blog
         $blogList = DB::select('
             SELECT blogOnlyId,blogTitle,case when CHAR_LENGTH(blogContent)>30 then CONCAT(left(blogContent,100),\'...\') else blogContent end as blogContent, 
-			blogUserTypeId,blogTag,readNum,likeNum from t_blog_info where isPublic = 1 and isSuspicious = 0 and user_id = \''.$request->userOnlyId.'\'');
+			blogUserTypeId,blogTag,readNum,likeNum from t_blog_info where isPublic = 1 and isSuspicious = 0 and user_id = \''.$request->userOnlyId.'\' 
+			and blogTitle like \'%'.$request->blogTitle.'%\'');
         //获取到的bloglist是一个数组 运用数组截取片段函数array_slice，即可完成分页操作
+        $count = count($blogList);
         $blogList = array_slice($blogList,$current,$pagecount);
         //$blogList = $blogList->offset($current)->limit($pagecount);
-        return json_encode(['msg_code'=>'0','data'=>['userInfo'=>$userinfo,'blogList'=>$blogList]],JSON_UNESCAPED_UNICODE);
+        return json_encode(['msg_code'=>'0','data'=>['userInfo'=>$userinfo,'blogList'=>$blogList,'blogNum'=>$count]],JSON_UNESCAPED_UNICODE);
     }
 
 
     //登录状态下用户密码修改
     public function Uppassword(Request $request){
         //和原有的密码做对比，看是否输入正确，正确则输入新密码
-        $userinfo= User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->get();
+        $userinfo= User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->first();
         if(Hash::check($request->oldpassword,$userinfo->password)){
             $userinfo->password = Hash::make($request->newpassword);
             if($userinfo->save()){
-                return json_encode(['ms_code'=>0,'Data'=>'修改成功！'],JSON_UNESCAPED_UNICODE);
+                return json_encode(['msg_code'=>0,'Data'=>'修改成功！'],JSON_UNESCAPED_UNICODE);
             }else{
-                return json_encode(['ms_code'=>1,'Data'=>'保存错误！'],JSON_UNESCAPED_UNICODE);
+                return json_encode(['msg_code'=>1,'Data'=>'保存错误！'],JSON_UNESCAPED_UNICODE);
             }
         }else{
-            return json_encode(['ms_code'=>1,'Data'=>'密码不和原来一致！'],JSON_UNESCAPED_UNICODE);
+            return json_encode(['msg_code'=>1,'Data'=>'密码不和原来一致！'],JSON_UNESCAPED_UNICODE);
         }
 
     }

@@ -13,11 +13,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class BlogController extends Controller
 {
     //查询blog/展示
     public function Search(Request $request){
+        //判断申请类型 0 为全blog查询 1为查询他人blog
+
         $search = is_null($request->search)?"":$request->search;
         //当前页
         $index = intval(is_null($request->index)?1:$request->index);
@@ -27,7 +30,7 @@ class BlogController extends Controller
         $blogtypeId = is_null($request->blogtypeId)?"":$request->blogtypeId;
         //默认以某类别进行展示,且默认按时间先后进行展示
         $type = intval(is_null($request->type)?1:$request->type);    //表示是否点击按时间先后还是热度，如果没有点击默认选择时间先后 1：时间先后、2：热度先后
-        if($type==1){
+        if($request->type==1){
             $types = "created_at";
         }else{
             //热度先后展示(点赞人数)
@@ -43,13 +46,14 @@ class BlogController extends Controller
         $current = ($index-1)*$pagecount;    //开始取数据的位置
 
         $bloginfo = BlogInfo::where('blogTitle','like','%'.$search.'%')
-            ->where('t_blog_info.blogTypeId','like','%'.$blogtypeId.'%')
-            ->where('t_blog_info.isPublic','=',1)
-            ->where('t_blog_info.isSuspicious','=',0)
-            ->join('t_user','t_user.userOnlyId','t_blog_info.user_id')
-            ->orderBy($types,'desc')
-            ->offset($current)->limit($pagecount)
-            ->get(['t_blog_info.*','t_user.name']);
+                ->where('t_blog_info.blogTypeId','like','%'.$blogtypeId.'%')
+                ->where('t_blog_info.isPublic','=',1)
+                ->where('t_blog_info.isSuspicious','=',0)
+                ->join('t_user','t_user.userOnlyId','t_blog_info.user_id')
+                ->orderBy($types,'desc')
+                ->offset($current)->limit($pagecount)
+                ->get(['t_blog_info.*','t_user.name']);
+
         foreach ($bloginfo as $bloginfos){
             $bloginfos->blogContent = mb_substr($bloginfos->blogContent , 0 , 100);
         }
@@ -190,9 +194,61 @@ class BlogController extends Controller
             $msg_code = 1;
             return json_encode(['msg_code'=>$msg_code,'msg'=>$msg],JSON_UNESCAPED_UNICODE);
         }
+    }
 
+    //用户自定义blog类型新增、获取、删除
+    public function CreateBlogType(Request $request){
+        //简单的非空验证
+        $validatedData = $request->validate([
+            'name' => 'required|max:4'
+        ],[
+            'name.required'=>'类型名字必填！',
+            'name.max'=>'类型名不超过四个字！'
+        ]);
 
+        //验证通过后做是否重复判断
+        $ubogtype = uBlogType::where('name','=',$request->name)->where('userId','=',Auth::guard('api')->user()->userOnlyId)->get();
+        $count = uBlogType::where('userId','=',Auth::guard('api')->user()->userOnlyId)->count();
+        if(empty($ubogtype)){
+            return json_encode(['msg_code'=>1,'data'=>'已经存在相同类型！'],JSON_UNESCAPED_UNICODE);
+        }
+        //用户自定义上限为10个
+        if($count<5){
+            $ubogtype = new uBlogType();
+            //dd('成功啦！');
+            $ubogtype->ublogTypeOnlyId = Uuid::uuid1();
+            $ubogtype->userId = Auth::guard('api')->user()->userOnlyId;
+            $ubogtype->name = $request->name;
+            $ubogtype->remark = $request->remark;
+            if($ubogtype->save()){
+                return json_encode(['msg_code'=>0,'data'=>'保存成功！'],JSON_UNESCAPED_UNICODE);
+            }else{
+                return json_encode(['msg_code'=>1,'data'=>'保存失败！'],JSON_UNESCAPED_UNICODE);
+            }
+        }else{
+            return json_encode(['msg_code'=>1,'data'=>'用户只能自定义5个类型！'],JSON_UNESCAPED_UNICODE);
+        }
+    }
 
+    //用户自定义blog获取
+    public function GetuBlogType(){
+        $ublogTyoe = uBlogType::where('userId','=',Auth::guard('api')->user()->userOnlyId)->get();
+        return json_encode(['msg_code'=>0,'data'=>$ublogTyoe],JSON_UNESCAPED_UNICODE);
+    }
+
+    //删除自定义blogtype
+    public function DeleteuBlogType(Request $request){
+
+        $validatedData = $request->validate([
+            'ublogTypeOnlyId'=>'required'],
+            ['ublogTypeOnlyId.required'=>'请选择想要删除的类型！']);
+
+        $ublogtype = uBlogType::where('ublogTypeOnlyId','=',$request->ublogTypeOnlyId)->get();
+        if($ublogtype->delete()){
+            return json_encode(['msg_code'=>0,'data'=>'删除成功！'],JSON_UNESCAPED_UNICODE);
+        }else{
+            return json_encode(['msg_code'=>0,'data'=>'删除失败！'],JSON_UNESCAPED_UNICODE);
+        }
     }
 
 }

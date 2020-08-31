@@ -57,6 +57,8 @@ Route::get('/blog/loginOut','API\Auth\APILoginOutController@LoginOut');
 
 
 
+
+
 Route::group(['middleware' => 'auth.api'], function () {
     //创建博客
     Route::post('/blog/create','API\UserController@createBlog');
@@ -102,7 +104,19 @@ Route::group(['middleware' => 'auth.api'], function () {
     Route::post('/blog/EditMyInfo','API\UserController@EditMyInfo');
     //用户登录状态下修改密码
     Route::post('/blog/UpPassword','API\UserController@Uppassword');
+    //用户新增自定义博客类型
+    Route::post('/blog/CreateBlogType','API\BlogController@CreateBlogType');
+    //获取自定义博客类型
+    Route::get('/blog/GetuBlogType','API\BlogController@GetuBlogType');
+    //删除自定义类型
+    Route::post('/blog/DeleteuBlogType','API\BlogController@DeleteuBlogType');
 
+    //图片操作->上传博客封面
+    Route::post('/blog/BlogImgUp','API\ImgController@BlogImgUp');
+    //图片操作->上传用户头像
+    Route::post('/blog/UserhImgUp','API\ImgController@UserhImgUp');
+    //图片操作->上传用户背景
+    Route::post('/blog/UserbImgUp','API\ImgController@UserbImgUp');
 
 });
 

@@ -4,15 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlogInfo extends Model
+class Img extends Model
 {
+    //
     //绑定表格
-    protected $table = 't_blog_info';
+    protected $table = 't_img';
 
     //绑定主键
     protected $primaryKey = 'id';
-
-    protected $fillable = [
-       'BlogUrl'
-    ];
 }
