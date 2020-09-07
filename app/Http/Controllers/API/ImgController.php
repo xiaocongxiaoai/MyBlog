@@ -97,7 +97,7 @@ class ImgController extends Controller
         if(!$Path){
             mkdir($imgpath);
         }
-        //更具前端传输方式选择是否批量处理
+//      更具前端传输方式选择是否批量处理
 //        foreach ($photos as $photo){
 //            $filename =Uuid::uuid1()."-".$photo->getClientOriginalName();
 //            array_push($filenames,$filename);

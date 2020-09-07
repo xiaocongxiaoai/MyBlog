@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Img.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_08_28_074803_create_t__img.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/BlogInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/BlogInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BlogController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ImgController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ImgController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_29_073221_create_counts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2020_06_29_073221_create_counts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +154,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -279,7 +272,13 @@
       <workItem from="1594000673693" duration="19750000" />
       <workItem from="1597214049057" duration="4662000" />
       <workItem from="1597223729527" duration="42000" />
-      <workItem from="1597993749191" duration="69601000" />
+      <workItem from="1597993749191" duration="81917000" />
+      <workItem from="1599188360627" duration="17000" />
+      <workItem from="1599189403809" duration="2234000" />
+      <workItem from="1599209492396" duration="1824000" />
+      <workItem from="1599211336923" duration="1743000" />
+      <workItem from="1599449881415" duration="1795000" />
+      <workItem from="1599451695937" duration="1880000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -365,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598430798437</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="图片上传：背景图、头像">
+      <created>1598843230220</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1598843230220</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,6 +434,7 @@
     <MESSAGE value="日常维护" />
     <MESSAGE value="数据迁移文件修改" />
     <MESSAGE value="新增用户操作功能：获取/修改自己基础信息、查询用户列表、查询用户信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增用户操作功能：获取/修改自己基础信息、查询用户列表、查询用户信息" />
+    <MESSAGE value="图片上传：背景图、头像" />
+    <option name="LAST_COMMIT_MESSAGE" value="图片上传：背景图、头像" />
   </component>
 </project>

@@ -59,10 +59,12 @@ class UserController extends Controller
     public function getMyInfo(){
         //
         //用户全部信息
-        $userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)
-            ->join('t_img','t_user.userOnlyId','t_img.user_id')
-            ->where('t_img.ImgType','=',0)
-            ->get(['name','userOnlyId','email','summary','phoneNum','isPublic','ImgType']);
+        //$userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->get();
+        $userinfo = User::with(['Img' => function($query) {
+            $query->where('ImgType','=',0)->select('user_id','ImgType','ImgUrl');
+        }])->where('userOnlyId', '=', Auth::guard('api')->user()->userOnlyId)->get(['userOnlyId','name','email','summary','phoneNum','isPublic']);
+        //$userinfo = User::find(1)->Img()->get();
+            //->get(['name','userOnlyId','email','summary','phoneNum','isPublic']);
         return json_encode(['msg_code'=>'0','data'=>$userinfo],JSON_UNESCAPED_UNICODE);
     }
     //修改自己的信息
