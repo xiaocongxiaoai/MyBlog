@@ -12,6 +12,7 @@ class APILoginController extends Controller
 {
     //登录认证
     public function Login(Request $request){
+        date_default_timezone_set(PRC);  //设定正确的时间
         //$msg[]=null;            //具体信息
         $msg_code = 0;          //返回成功类型信息
         //可以用用户名或者邮箱登录

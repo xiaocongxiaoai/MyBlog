@@ -13,3 +13,12 @@ php artisan make:controller Admin/IndexController
 #解决本地开发post请求跨域问题
 https://www.cnblogs.com/cxx8181602/p/11021817.html
 
+#脚本生成数据获取后台数据
+***
+说明：获取用户历史浏览记录，用于算法计算出合适用户爱好的博客并推荐 \
+自定义php命令：  php artisan make:command GetUserAction\
+调用 php artisan GetUserAction \
+逻辑在：App\Console\Commands\GetUserAction.php
+***
+
+

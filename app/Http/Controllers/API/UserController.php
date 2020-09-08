@@ -60,9 +60,14 @@ class UserController extends Controller
         //
         //用户全部信息
         //$userinfo = User::where('userOnlyId','=',Auth::guard('api')->user()->userOnlyId)->get();
+
         $userinfo = User::with(['Img' => function($query) {
             $query->where('ImgType','=',0)->select('user_id','ImgType','ImgUrl');
-        }])->where('userOnlyId', '=', Auth::guard('api')->user()->userOnlyId)->get(['userOnlyId','name','email','summary','phoneNum','isPublic']);
+        }])->where('userOnlyId', '=', Auth::guard('api')->user()->userOnlyId)
+            ->get(['userOnlyId','name','email','summary','phoneNum','isPublic']);
+//        $userinfo = User::where('userOnlyId', '=', Auth::guard('api')->user()->userOnlyId)->get(['userOnlyId','name','email','summary','phoneNum','isPublic']);
+//        $userinfo->Url = Img::where('ImgType','=',0)->where('user_id', '=', Auth::guard('api')->user()->userOnlyId)->get();
+
         //$userinfo = User::find(1)->Img()->get();
             //->get(['name','userOnlyId','email','summary','phoneNum','isPublic']);
         return json_encode(['msg_code'=>'0','data'=>$userinfo],JSON_UNESCAPED_UNICODE);
@@ -106,8 +111,8 @@ class UserController extends Controller
         $userinfo = User::where('userOnlyId','=',$request->userOnlyId)->get(['name','userOnlyId','email','summary','phoneNum']);
         //用户名下的正常blog
         $blogList = DB::select('
-            SELECT blogOnlyId,blogTitle,case when CHAR_LENGTH(blogContent)>30 then CONCAT(left(blogContent,100),\'...\') else blogContent end as blogContent, 
-			blogUserTypeId,blogTag,readNum,likeNum from t_blog_info where isPublic = 1 and isSuspicious = 0 and user_id = \''.$request->userOnlyId.'\' 
+            SELECT blogOnlyId,blogTitle,case when CHAR_LENGTH(blogContent)>30 then CONCAT(left(blogContent,100),\'...\') else blogContent end as blogContent,
+			blogUserTypeId,blogTag,readNum,likeNum from t_blog_info where isPublic = 1 and isSuspicious = 0 and user_id = \''.$request->userOnlyId.'\'
 			and blogTitle like \'%'.$request->blogTitle.'%\'');
         //获取到的bloglist是一个数组 运用数组截取片段函数array_slice，即可完成分页操作
         $count = count($blogList);
@@ -371,6 +376,7 @@ class UserController extends Controller
         //是否可疑（为标题存在敏感内容）
         $bloginfo->isSuspicious = $this->test_Bayesians($request->title);               //调用算法测试标题合法性（是否带有侮辱性）
         $bloginfo->reportNum = 0;                  //举报人数默认值为0
+
         if($bloginfo->save()){
             $msg_code = 0;    //返回正确信息
             $msg[] = "提交成功！";

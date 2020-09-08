@@ -16,6 +16,7 @@ class WebToken
      */
     public function handle($request, Closure $next)
     {
+        //date_default_timezone_set('PRC');
         if (Auth::guard('api')->guest()) {
             return response()->json(['msg_code' => 1,'msg' => '未设置token'])->setEncodingOptions(JSON_UNESCAPED_UNICODE);
         }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\BlogInfo;
 use App\User;
+use App\UserAction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -17,15 +18,11 @@ class AdminController extends Controller
     public function Login(){
         return view('admin.login');
     }
-
-
     /**后端逻辑**/
     //    //用户的管理(增删查改)
     //    //blog的审批(计划用分类算法，推荐给admin可疑的文章进行审批操作)
     //    //blog类别的管理(增删查改)
     //    //blog系统标签的管理(增删查改)
-
-
     //    处理登录认证
     public function Loging(Request $request){
         //判断
@@ -101,5 +98,16 @@ class AdminController extends Controller
               ->get(['t_blog_info.*','t_user.name']);
         return json_encode(['msg_code'=>0,'msg'=>'OK','data'=>$bloginfo],JSON_UNESCAPED_UNICODE);
 
+    }
+
+    public function GetAction(){
+        //$action = UserAction::select('userId','blogInfoId')->get()->groupBy('userId');
+        //$action = DB::table('t_user_action')->get()->groupBy('userId','blogInfoId');
+        $action = DB::select('
+            select userId,blogInfoId from t_user_action group by userId,blogInfoId
+        ');
+
+        //dd($action);
+        return json_encode(['data'=>$action],JSON_UNESCAPED_UNICODE);
     }
 }

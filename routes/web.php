@@ -31,6 +31,8 @@ Route::get('/test_jiami','Controller@test_jiami');
 Route::get('/admin/login','Admin\AdminController@Login')->name('Login');
 Route::post('/login','Admin\AdminController@Loging');
 
+Route::get('/GetAction','Admin\AdminController@GetAction');//
+
 Route::group(['middleware' => 'auth'], function () {
     //获取数据
     Route::get('/home',function (){

@@ -2,7 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\UserAction;
+use Carbon\Traits\Date;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Exception;
 
 class GetUserAction extends Command
 {
@@ -37,7 +41,48 @@ class GetUserAction extends Command
      */
     public function handle()
     {
+        date_default_timezone_set('PRC');//统一当前时间区间为北京
         //获取与更新逻辑写在此处
+        //从数据库中获取数据存入txt中
 
+
+
+        echo "获取初始数据中...    ".date( "Y:m:d H:i:s")."\n";
+
+        if($this->createfile("app/Console/Data/StartData.txt")){
+            echo "数据获取成功！------".date( "Y:m:d H:i:s")."\n";
+            $mylog = fopen("app/Console/Log.txt", "w");
+            fwrite($mylog,getenv("REMOTE_ADDR").'/'.date( "Y:m:d H:i:s")."/EditLogfile\n");
+            fclose($mylog);
+        }else{
+            echo "数据获取失败！------".date( "Y:m:d H:i:s")."\n";
+        }
+        //获取数据库数据
+        //更新命令执行的记录文件
+    }
+
+    public function createfile($url){
+        try {
+
+        //先判断删除原有文件
+         if(is_dir($url)){
+             unlink($url);
+         }
+        $action = DB::select('
+            select userId,blogInfoId from t_user_action group by userId,blogInfoId
+        ');
+        $myfile = fopen($url, "w");
+        foreach ($action as $a){
+            fwrite($myfile, 'userId:'.$a->userId.';blogInfoId:'.$a->blogInfoId."\n");
+        }
+
+        fclose($myfile);
+        return true;
+        }catch (Exception $e){
+            //记录异常
+            $mylog = fopen("app/Console/Log.txt", "w");
+            fwrite($mylog,getenv("REMOTE_ADDR").'/'.date( "Y:m:d H:i:s").'/'.$e->getMessage()."\n");
+            fclose($mylog);
+        }
     }
 }
