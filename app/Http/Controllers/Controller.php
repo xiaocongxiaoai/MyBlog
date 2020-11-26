@@ -12,6 +12,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 
 class Controller extends BaseController
 {
@@ -76,6 +77,14 @@ class Controller extends BaseController
 //        //加密
 //        $t = decrypt($t);
 //        dd($t);
+    }
+    public function TestRedis(){
+        //Redis::ltrim('Room1',0,0);   //清空队列
+        Redis::rpush('Room1', rand(1,10));  // 返回列表长度 1
+        $redis = Redis::lrange ('Room1', 0, -1); //返回第0个至倒数第一个, 相当于返回所有元素
+        foreach ($redis as $k =>$v){
+            print $v.'<br/>';
+        }
     }
 }
 

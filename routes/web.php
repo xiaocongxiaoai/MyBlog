@@ -30,6 +30,9 @@ Route::get('/test_jiami','Controller@test_jiami');
 /*****************************************************************************/
 Route::get('/admin/login','Admin\AdminController@Login')->name('Login');
 Route::post('/login','Admin\AdminController@Loging');
+Route::post('/test1','Admin\AdminController@Testdatafrom');
+Route::get('/redis','Controller@TestRedis');
+
 
 Route::get('/GetAction','Admin\AdminController@GetAction');//
 

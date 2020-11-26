@@ -5,20 +5,34 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="测试">
-      <change afterPath="$PROJECT_DIR$/app/Console/Data/StartData.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Console/Log.txt" afterDir="false" />
+    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="新增脚本定期获取用户浏览数据，用于今后开发推荐算法">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Redis/testRedis.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/WebSocketServiceTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/TestWebSocket.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Blog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/GetUserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/GetUserAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/APIControllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/APIControllers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APILoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APILoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APIRegisertController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APIRegisertController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/WebToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/WebToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/WebSocketService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/WebSocketService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/laravels.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/laravels.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/logging.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/WebSocket.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/WebSocket.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/testSwoole.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/testSwoole.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,20 +43,6 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,7 +99,6 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
-      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
@@ -137,7 +136,6 @@
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/fukuball/jieba-php" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
-      <path value="$PROJECT_DIR$/vendor/predis/predis" />
       <path value="$PROJECT_DIR$/vendor/components/jquery" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/swoole/ide-helper" />
@@ -147,20 +145,25 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/overtrue/easy-sms" />
+      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
     </include_path>
   </component>
   <component name="ProjectId" id="1R0CpLykZmZxz1CuX51b4KelLvm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="添加" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -168,23 +171,24 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\xcc\objects\MyBlog\database\migrations" />
-      <recent name="D:\xcc\objects\MyBlog\public\bootstrap" />
-      <recent name="D:\xcc\objects\MyBlog\public" />
-      <recent name="D:\xcc\code\Blog\public\img" />
-      <recent name="D:\xcc\code\Blog\resources\views\admin" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\xcc\objects\MyBlog\database\migrations\tables" />
       <recent name="D:\xcc\objects\MyBlog\resources\views" />
       <recent name="D:\xcc\code\Blog\resources\views\img" />
       <recent name="D:\xcc\code\Blog\database\migrations\tables" />
       <recent name="D:\xcc\code\Blog\app\Http\Controllers\API\Auth" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xcc\objects\MyBlog\public" />
+      <recent name="D:\xcc\objects\MyBlog\database\migrations" />
+      <recent name="D:\xcc\objects\MyBlog\public\bootstrap" />
+      <recent name="D:\xcc\code\Blog\public\img" />
+      <recent name="D:\xcc\code\Blog\resources\views\admin" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.php">
@@ -289,7 +293,17 @@
       <workItem from="1599460027738" duration="120000" />
       <workItem from="1599460207221" duration="163000" />
       <workItem from="1599462431424" duration="8205000" />
-      <workItem from="1599525923378" duration="11587000" />
+      <workItem from="1599525923378" duration="11864000" />
+      <workItem from="1599739844166" duration="13478000" />
+      <workItem from="1600418652741" duration="419000" />
+      <workItem from="1602481362347" duration="7524000" />
+      <workItem from="1605095713988" duration="1048000" />
+      <workItem from="1605098311666" duration="888000" />
+      <workItem from="1605150776911" duration="867000" />
+      <workItem from="1605666756525" duration="10856000" />
+      <workItem from="1605837074774" duration="42000" />
+      <workItem from="1605856527427" duration="172000" />
+      <workItem from="1606115861646" duration="43430000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -396,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599462524421</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="新增脚本定期获取用户浏览数据，用于今后开发推荐算法">
+      <created>1599555077801</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1599555077801</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,32 +487,77 @@
     <MESSAGE value="图片上传：背景图、头像" />
     <MESSAGE value="优化返回信息，带头像信息" />
     <MESSAGE value="测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试" />
+    <MESSAGE value="新增脚本定期获取用户浏览数据，用于今后开发推荐算法" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增脚本定期获取用户浏览数据，用于今后开发推荐算法" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="492" y="318" key="#Deployment" timestamp="1605669108582">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="492" y="318" key="#Deployment/0.0.1920.1040@0.0.1920.1040" timestamp="1605669108582" />
+    <state x="930" y="267" key="#SSH_Configurations" timestamp="1605667675248">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="930" y="267" key="#SSH_Configurations/0.0.1920.1040@0.0.1920.1040" timestamp="1605667675248" />
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606272683911">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606272683911" />
+    <state x="760" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1606359562825">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="760" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606359562825" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599547070286">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599547070286" />
-    <state x="554" y="0" key="CommitChangelistDialog2" timestamp="1599462523834">
+    <state x="554" y="0" key="CommitChangelistDialog2" timestamp="1599555077144">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="554" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1599462523834" />
-    <state x="801" y="290" key="FileChooserDialogImpl" timestamp="1599537861926">
+    <state x="554" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1599555077144" />
+    <state x="801" y="290" key="FileChooserDialogImpl" timestamp="1605837089475">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="801" y="290" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599537861926" />
-    <state x="385" y="275" key="SettingsEditor" timestamp="1599537871996">
+    <state x="801" y="290" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605837089475" />
+    <state x="212" y="0" key="FileDocumentManager.FileCacheConflict" timestamp="1606287516459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="385" y="275" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599537871996" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1599462538049">
+    <state x="212" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1920.1040@0.0.1920.1040" timestamp="1606287516459" />
+    <state x="749" y="231" key="NewPhpClassDialog" timestamp="1606359475455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599462538049" />
+    <state x="749" y="231" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606359475455" />
+    <state x="764" y="439" key="NewPhpFileDialog" timestamp="1606359431144">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="764" y="439" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606359431144" />
+    <state x="385" y="275" key="SettingsEditor" timestamp="1606291050449">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="385" y="275" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606291050449" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1599555089421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599555089421" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599464355457">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599464355457" />
+    <state x="537" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606203415623">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="537" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606203415623" />
+    <state x="840" y="334" key="ftp.server.browser" timestamp="1605669107160">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="840" y="334" key="ftp.server.browser/0.0.1920.1040@0.0.1920.1040" timestamp="1605669107160" />
+    <state x="825" y="432" key="publish.login" timestamp="1605856566509">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="825" y="432" key="publish.login/0.0.1920.1040@0.0.1920.1040" timestamp="1605856566509" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606204243729">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606204243729" />
   </component>
 </project>

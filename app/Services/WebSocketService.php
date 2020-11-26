@@ -28,6 +28,14 @@ class WebSocketService implements WebSocketHandlerInterface
 ////        echo "server: handshake success with fd{$request->fd}\n";
 ////        $server->push($request->fd, '欢迎来到图灵机器人！');
 ///
+///
+
+
+
+
+
+
+
         // 如果未建立连接，先建立连接
         if (!request()->input('sid')) {
             // 初始化连接信息 socket.io-client

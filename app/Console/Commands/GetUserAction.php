@@ -51,9 +51,15 @@ class GetUserAction extends Command
 
         if($this->createfile("app/Console/Data/StartData.txt")){
             echo "数据获取成功！------".date( "Y:m:d H:i:s")."\n";
-            $mylog = fopen("app/Console/Log.txt", "w");
-            fwrite($mylog,getenv("REMOTE_ADDR").'/'.date( "Y:m:d H:i:s")."/EditLogfile\n");
+            $mylog = fopen("app/Console/Log.txt", "a");
+            fputs($mylog, getenv("REMOTE_ADDR").'/'.date( "Y:m:d H:i:s")."/EditLogfile\n");
             fclose($mylog);
+            //转换数据格式
+            if($this->createfileend("app/Console/Data/EndData.txt",file("app/Console/Data/StartData.txt")))
+            {
+                echo "数据转换成功！------".date( "Y:m:d H:i:s")."\n";
+            }
+
         }else{
             echo "数据获取失败！------".date( "Y:m:d H:i:s")."\n";
         }
@@ -80,6 +86,38 @@ class GetUserAction extends Command
         return true;
         }catch (Exception $e){
             //记录异常
+            $mylog = fopen("app/Console/Log.txt", "w");
+            fwrite($mylog,getenv("REMOTE_ADDR").'/'.date( "Y:m:d H:i:s").'/'.$e->getMessage()."\n");
+            fclose($mylog);
+        }
+    }
+
+    public function createfileend($url,$file){
+        try {
+            //先判断删除原有文件
+            if(is_dir($url)){
+                unlink($url);
+            }
+            echo "数据转换中请稍后...   ".date( "Y:m:d H:i:s")."\n";
+            $myfile = fopen($url, "w");
+            $infoend=[];
+            for($i=0;$i<count($file);$i++)//逐行读取文件内容
+            {
+                //取id 和 博客id
+                $info = str_replace(['userId:','blogInfoId:'],'',$file[$i]);
+
+                $infos = explode(";",$info);
+                $infoend[$infos[0]] = $infoend[$infos[0]] == null?$infoend[$infos[0]].";".$infos[1] :$infos[1];
+            }
+
+            foreach ($infoend as $k=>$v){
+                fwrite($myfile, $k.":".$v);
+            }
+
+            fclose($myfile);
+            return true;
+        }catch (Exception $e){
+            //记录异常 一般不会到这 兜底操作
             $mylog = fopen("app/Console/Log.txt", "w");
             fwrite($mylog,getenv("REMOTE_ADDR").'/'.date( "Y:m:d H:i:s").'/'.$e->getMessage()."\n");
             fclose($mylog);

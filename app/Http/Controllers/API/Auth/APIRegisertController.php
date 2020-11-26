@@ -16,7 +16,7 @@ class APIRegisertController extends Controller
     //注册方法，判断必填项
 
     public function Regisert(Request $Requst){
-        date_default_timezone_set(PRC);
+        date_default_timezone_set('PRC');
         //定义返回信息
         $msg_code=0; //默认是返回正确返回值
         $msg=[];

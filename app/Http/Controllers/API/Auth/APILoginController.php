@@ -47,4 +47,10 @@ class APILoginController extends Controller
 
 
     }
+
+    function test_login(Request $request){
+
+        dd(456);
+
+    }
 }

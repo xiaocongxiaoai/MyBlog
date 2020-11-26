@@ -5,7 +5,7 @@
 QQ:313697239
 
 #运行数据迁移带路径
-php artisan migrate --path=MyBlog/database/migrations/tables
+php artisan migrate --path=./database/migrations/tables
 
 #创建控制器带路径
 php artisan make:controller Admin/IndexController

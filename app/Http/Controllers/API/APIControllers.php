@@ -12,7 +12,11 @@ use Illuminate\Http\Request;
 class APIControllers extends Controller
 {
     //admin
+    function test_login(Request $request){
 
+        dd(123);
+
+    }
 
 
 

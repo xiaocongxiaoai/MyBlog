@@ -23,7 +23,7 @@ return [
     ],
     'websocket'                => [
         'enable' => true,
-        'handler' => \App\Services\WebSocketService::class,
+        'handler' => \App\Services\WebSocketServiceTest::class,
         'middleware' => [
             //\Illuminate\Auth\Middleware\Authenticate::class,
             //\App\Http\Middleware\VerifyCsrfToken::class,

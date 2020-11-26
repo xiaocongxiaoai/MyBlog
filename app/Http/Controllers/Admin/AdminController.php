@@ -110,4 +110,8 @@ class AdminController extends Controller
         //dd($action);
         return json_encode(['data'=>$action],JSON_UNESCAPED_UNICODE);
     }
+
+    public function Testdatafrom(Request $request){
+        dd($request);
+    }
 }

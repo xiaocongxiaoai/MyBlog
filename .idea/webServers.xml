@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="cc16556a-e32a-4b55-b592-9d0d88d808c5" name="腾讯云">
+        <fileTransfer rootFolder="/home/ubuntu/laravel/object/MyBlog" accessType="SFTP" host="42.192.78.114" port="22" sshConfigId="e2eeb44e-d1ef-408c-844a-e29b0263d7fb" sshConfig="ubuntu@42.192.78.114:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
