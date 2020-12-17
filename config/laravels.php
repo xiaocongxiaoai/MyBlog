@@ -21,6 +21,11 @@ return [
     'event_handlers'           => [
         'WorkerStart' => \App\Events\WorkerStartEvent::class,
     ],
+    'events' => [
+        \App\Events\TestEvent::class => [
+            \App\Listeners\TestEventListener::class,
+        ]
+    ],
     'websocket'                => [
         'enable' => true,
         'handler' => \App\Services\WebSocketServiceTest::class,
@@ -92,7 +97,7 @@ return [
         'dispatch_mode'      => 2,
         'reactor_num'        => env('LARAVELS_REACTOR_NUM', function_exists('swoole_cpu_num') ? swoole_cpu_num() * 2 : 4),
         'worker_num'         => env('LARAVELS_WORKER_NUM', function_exists('swoole_cpu_num') ? swoole_cpu_num() * 2 : 8),
-        //'task_worker_num'    => env('LARAVELS_TASK_WORKER_NUM', function_exists('swoole_cpu_num') ? swoole_cpu_num() * 2 : 8),
+        'task_worker_num'    => env('LARAVELS_TASK_WORKER_NUM', function_exists('swoole_cpu_num') ? swoole_cpu_num() * 2 : 8),
         'task_ipc_mode'      => 1,
         'task_max_request'   => env('LARAVELS_TASK_MAX_REQUEST', 8000),
         'task_tmpdir'        => @is_writable('/dev/shm/') ? '/dev/shm' : '/tmp',

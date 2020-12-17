@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat Client</title>
+    <button type="button" id="btn">退出!</button>
 </head>
 <body>
 <script>
+    var socket;
+    var btn = document.getElementById("btn");
+    btn.onclick = function(){
+        socket.close();
+    }
     window.onload = function () {
-        var nick = prompt("Enter your nickname");
+        var nick = prompt("输入你的名字，亲爱的");
+        var room = prompt("你想进哪个房间？");
         var input = document.getElementById("input");
         input.focus();
 
         // 初始化客户端套接字并建立连接
-        var socket = new WebSocket("ws://42.192.78.114/ws");
+        socket = new WebSocket("ws://42.192.78.114/ws");
 
         // 连接建立时触发
         socket.onopen = function (event) {
             console.log("Connection open ...");
+            socket.send(JSON.stringify({'Type':'Join','Data':'','roomId':room}));//JSON.stringify 转换成json字符串 不然服务端接受不到
         }
 
         // 接收到服务端推送时执行
         socket.onmessage = function (event) {
-            var msg = event.data;
-            var node = document.createTextNode(msg);
+            var msg = JSON.parse(event.data);
+            console.log(msg);
+            var node = document.createTextNode(msg.data);
             var div = document.createElement("div");
             div.appendChild(node);
             document.body.insertBefore(div, input);
@@ -31,15 +40,17 @@
 
         // 连接关闭时触发
         socket.onclose = function (event) {
+            alert("你已经退出群聊了！亲爱的");
             console.log("Connection closed ...");
         }
 
         input.onchange = function () {
             var msg = nick + ": " + input.value;
             // 将输入框变更信息通过 send 方法发送到服务器
-            socket.send(msg);
+            socket.send(JSON.stringify({'Type':'Speek','Data':msg,'roomId':room}));
             input.value = "";
         };
+
     }
 </script>
 <input id="input" style="width: 100%;">

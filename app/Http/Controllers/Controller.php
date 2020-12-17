@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Console\Commands\GetUserAction;
+use App\Jobs\ToSql;
+use App\Messagelog;
 use Fukuball\Jieba\Finalseg;
 use Fukuball\Jieba\Jieba;
 use Hamcrest\Core\Set;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -13,6 +16,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+
 
 class Controller extends BaseController
 {
@@ -77,6 +81,12 @@ class Controller extends BaseController
 //        //加密
 //        $t = decrypt($t);
 //        dd($t);
+        $count = Messagelog::all()->count();
+
+        $info = Messagelog::where('RoomId','=','SZSP')
+            ->offset($count>30?0:$count-30)->limit(30)
+            ->orderBy('created_at','asc')->get(['Data','created_at']);
+        return $info;
     }
     public function TestRedis(){
         //Redis::ltrim('Room1',0,0);   //清空队列
@@ -86,5 +96,35 @@ class Controller extends BaseController
             print $v.'<br/>';
         }
     }
+
+    public function StartBuy(Request $request){
+        //定义开始抢购
+        $store = 20;
+        $res = Redis::llen('goods_store');
+        $count = $store -$res;
+
+        for($i= 0 ;$i<$count;$i++){
+            //向队列中插入数据
+            Redis::lpush('goods_store',1);
+        }
+
+        return json_encode(['msg'=>1,'msg_code'=>'OK'],JSON_UNESCAPED_UNICODE);
+    }
+
+    //Redis 队列POP 操作进行并发操作
+    public function Miao(Request $request){
+        //给我UserId 用于记录
+
+        //pop 操作进行抢购
+        $count = Redis::lpop('goods_store');
+        if(!$count){
+            return json_encode(['msg'=>0,'msg_code'=>'sorry!'],JSON_UNESCAPED_UNICODE);
+        }else{
+
+            ToSql::dispatch($request->UserId)->delay(now()->addSecond(3));  //对于用户来说 我只需要进行抢购成功 通知我就可以，后续的更改数据库或者其他操作我并不担心，所以这里用到队列，异步执行后续操作，立马返回是抢购成功
+            return json_encode(['msg'=>1,'msg_code'=>'OK!'],JSON_UNESCAPED_UNICODE);
+        }
+    }
+
 }
 

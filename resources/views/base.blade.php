@@ -19,8 +19,8 @@
             <div style="padding: 14px">
                 <el-collapse v-model="activeNames">
                     <el-collapse-item title="个人信息" name="1">
-                    <div style="margin-left: 30%">
-                        <el-avatar src="http://10.20.38.251/1.jpg"  :size = "200" :fit="none"  class="image"></el-avatar>
+                    <div style="margin-left: 8%">
+                        <el-avatar src="{{route('/img/admin/2.jpg')}}"  :size = "200" :fit="none"  class="image"></el-avatar>
                     </div>
                     <div style="padding: 14px;text-align: center" >
                         <span>你好管理员</span>
