@@ -5,135 +5,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="test yun">
-      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebSocket.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Console/Data/EndData.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Events/TestEvent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Jobs/ToSql.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Listeners/TestEventListener.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_04_072131_create_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_04_072151_create_failed_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_11_054259_t__messagelog_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/info.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Stop.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/34fa2fa4-e747-11ea-969e-08002745c6b0-΢�Ž�ͼ_20200826094131.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/363e91ec-30f5-11ea-864c-080027544624-����pecl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/3ff97110-30f6-11ea-a25d-080027544624-�༭phpini�ļ�2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/4fe853e0-e73d-11ea-9e6c-08002745c6b0-΢�Ž�ͼ_20200826094131.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/56bb3f14-30f6-11ea-9aef-080027544624-�Ƿ���ӳɹ�swoole.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/6ca242d0-30f3-11ea-a22d-080027544624-��¼homestead.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/d913332a-30f3-11ea-9eed-080027544624-����pecl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/e198230c-30f3-11ea-affa-080027544624-����pecl.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/e58ee3c2-30f5-11ea-8e67-080027544624-�༭phpini�ļ�.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/info.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/nginx.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/css/app.75bce8e912e8944373fea3f3b2601e3a.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/css/app.75bce8e912e8944373fea3f3b2601e3a.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/fonts/element-icons.535877f.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/fonts/element-icons.732389d.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/fonts/fontawesome-webfont.674f50d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/fonts/fontawesome-webfont.af7ae50.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/fonts/fontawesome-webfont.b06871f.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/fonts/fontawesome-webfont.fee66e7.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/img/1.d1215cb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/img/fontawesome-webfont.912ec66.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/img/topSample2.d443eaa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/0.2fea00744e67174642fe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/0.2fea00744e67174642fe.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/1.c8b4a0e32bd76ec73514.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/1.c8b4a0e32bd76ec73514.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/2.523677cc3c90c84bc0ff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/2.523677cc3c90c84bc0ff.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/3.9ff2525ec8e68d0a3866.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/3.9ff2525ec8e68d0a3866.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/4.9411305264c8937ce4ff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/4.9411305264c8937ce4ff.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/5.dcb921583d9e6e6ebe40.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/5.dcb921583d9e6e6ebe40.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/6.4df30bd6c34f06ee5ae3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/6.4df30bd6c34f06ee5ae3.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/7.b0c1aff6a019a61d1f2d.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/7.b0c1aff6a019a61d1f2d.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/8.d115d365595961a0d09b.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/8.d115d365595961a0d09b.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/app.85a316e1b904e0be73e2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/app.85a316e1b904e0be73e2.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/manifest.c5a4b884f4f7abe9f513.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/manifest.c5a4b884f4f7abe9f513.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/vendor.06f20f447f63a3254fd8.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/js/vendor.06f20f447f63a3254fd8.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/testXieCheng.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/laravels.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tcp_client.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tcp_server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testSwoole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Blog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="922f5c5a-5dca-4e16-95d2-46e1de50a6d8" name="Default Changelist" comment="test yun2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/BlogTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/BlogTag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/BlogType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/BlogType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/News.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/News.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/BayesianAlgorithm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/BayesianAlgorithm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APILoginOutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Auth/APILoginOutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CorsHttp.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CorsHttp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/WebSocketServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/WebSocketServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TrainingBayes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TrainingBayes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/UserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/uBlogType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/uBlogType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/app.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/laravels.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/laravels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081031_create_t_comment_constraint.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081031_create_t_comment_constraint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081058_create_t_user_action_constraint.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081058_create_t_user_action_constraint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081124_create_t_ublog_type_constraint.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081124_create_t_ublog_type_constraint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081152_create_t_blog_type_constraint.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081152_create_t_blog_type_constraint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081223_create_t_blog_info_constraint.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081223_create_t_blog_info_constraint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081259_create_t_user_constraint.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_081259_create_t_user_constraint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_090136_create_t_blog_tag_constraint.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/constraint/2019_09_25_090136_create_t_blog_tag_constraint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_075949_create_t_blog_info.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080026_create_t_blog_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080026_create_t_blog_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080121_create_t_ublog_type.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080121_create_t_ublog_type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080529_create_t_user_action.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_080529_create_t_user_action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_090040_create_t_blog_tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_09_25_090040_create_t_blog_tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/tables/2019_10_10_091814_create_t_training_bayes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/tables/2019_10_10_091814_create_t_training_bayes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/TestWebSocket.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/TestWebSocket.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/testSwoole.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/testSwoole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/laravels.pid" beforeDir="false" afterPath="$PROJECT_DIR$/storage/laravels.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -411,7 +286,10 @@
       <workItem from="1607564519736" duration="1778000" />
       <workItem from="1607566338338" duration="2013000" />
       <workItem from="1607572906816" duration="9156000" />
-      <workItem from="1607650532846" duration="15045000" />
+      <workItem from="1607650532846" duration="16559000" />
+      <workItem from="1608685000683" duration="1084000" />
+      <workItem from="1608687312576" duration="599000" />
+      <workItem from="1609913227214" duration="2275000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1571194238152</created>
@@ -532,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606378488325</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="test yun2">
+      <created>1608183916844</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1608183916844</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,7 +490,8 @@
     <MESSAGE value="新增脚本定期获取用户浏览数据，用于今后开发推荐算法" />
     <MESSAGE value="重新学习swoole" />
     <MESSAGE value="test yun" />
-    <option name="LAST_COMMIT_MESSAGE" value="test yun" />
+    <MESSAGE value="test yun2" />
+    <option name="LAST_COMMIT_MESSAGE" value="test yun2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="492" y="318" key="#Deployment" timestamp="1607055694523">
@@ -632,10 +518,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607675331609" />
-    <state x="554" y="0" key="CommitChangelistDialog2" timestamp="1608183479275">
+    <state x="554" y="0" key="CommitChangelistDialog2" timestamp="1608183915899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="554" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608183479275" />
+    <state x="554" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608183915899" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1608183328658">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -664,14 +550,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="810" y="430" key="VCS.ChangelistChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1608183276260" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1606786215661">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1608183926857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606786215661" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599464355457">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599464355457" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1608183926857" />
     <state x="537" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606203415623">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -680,10 +562,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="840" y="334" key="ftp.server.browser/0.0.1920.1040@0.0.1920.1040" timestamp="1605669107160" />
-    <state x="825" y="432" key="publish.login" timestamp="1607665398913">
+    <state x="825" y="432" key="publish.login" timestamp="1609913510083">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="825" y="432" key="publish.login/0.0.1920.1040@0.0.1920.1040" timestamp="1607665398913" />
+    <state x="825" y="432" key="publish.login/0.0.1920.1040@0.0.1920.1040" timestamp="1609913510083" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607578819432">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

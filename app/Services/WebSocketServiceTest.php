@@ -50,7 +50,7 @@ class WebSocketServiceTest implements WebSocketHandlerInterface
             }
         }
 
-        else{
+        elseif($data['Type']=="Tack"){
             //取Redis内的用户 在同时push多个用户
             //Redis::rpush('Rooms1', $frame->fd);  // 返回列表长度 1
             $redis = Redis::lrange ($data['roomId'], 0, -1); //返回第0个至倒数第一个, 相当于返回所有元素
@@ -58,6 +58,9 @@ class WebSocketServiceTest implements WebSocketHandlerInterface
             foreach ($redis as $k =>$v){
                 $server->push($v, json_encode(['msg'=>2,'data'=>$data['Data'] .'    '. date('Y-m-d H:i:s')],JSON_UNESCAPED_UNICODE));
             }
+        }
+        else{
+            $this->levelRoom($data['roomId'],$frame->fd);
         }
     }
 
@@ -83,5 +86,9 @@ class WebSocketServiceTest implements WebSocketHandlerInterface
             ->offset($count>30?0:$count-30)->limit(30)
             ->orderBy('created_at','asc')->get(['Data','created_at']);
         return $info;
+    }
+
+    public function levelRoom($Id,$room){
+        Redis::lrem($room, 1, $Id) ;
     }
 }

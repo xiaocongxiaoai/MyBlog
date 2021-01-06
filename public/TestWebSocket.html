@@ -8,13 +8,16 @@
 <body>
 <script>
     var socket;
+    var nick;
+    var room;
     var btn = document.getElementById("btn");
     btn.onclick = function(){
+        socket.send(JSON.stringify({'Type':'Level','Data':'','roomId':room}));
         socket.close();
     }
     window.onload = function () {
-        var nick = prompt("输入你的名字，亲爱的");
-        var room = prompt("你想进哪个房间？");
+        nick = prompt("输入你的名字，亲爱的");
+        room = prompt("你想进哪个房间？");
         var input = document.getElementById("input");
         input.focus();
 
@@ -47,7 +50,7 @@
         input.onchange = function () {
             var msg = nick + ": " + input.value;
             // 将输入框变更信息通过 send 方法发送到服务器
-            socket.send(JSON.stringify({'Type':'Speek','Data':msg,'roomId':room}));
+            socket.send(JSON.stringify({'Type':'Tack','Data':msg,'roomId':room}));
             input.value = "";
         };
 
